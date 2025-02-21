@@ -3,7 +3,7 @@
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   
-  <title>Hi</title>
+  <title>Song</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
@@ -15,29 +15,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>YouTube Video Embed</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 0;
-    }
-
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      justify-items: center;
-    }
-
     .video-container {
       position: relative;
       padding-bottom: 56.25%; /* 16:9 aspect ratio */
       height: 0;
       overflow: hidden;
+      max-width: 100%;
       background: #000;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
     }
 
     .video-container iframe {
@@ -46,45 +31,24 @@
       left: 0;
       width: 100%;
       height: 100%;
-      border-radius: 10px;
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-      margin-top: 30px;
-    }
-
-    /* Optional: Video Titles */
-    .video-title {
-      text-align: center;
-      font-weight: bold;
-      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Popular YouTube Videos</h1>
+  <!-- First Video (Adele - Hello) -->
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/YQHsXMglC9A" frameborder="0" allowfullscreen></iframe>
+  </div>
 
-  <div class="container">
-    <!-- First Video (Adele - Hello) -->
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/YQHsXMglC9A" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="video-title">Adele - Hello</div>
+  <!-- Second Video (Ed Sheeran - Shape of You) -->
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/JGwWNGJdvx8" frameborder="0" allowfullscreen></iframe>
+  </div>
 
-    <!-- Second Video (Ed Sheeran - Shape of You) -->
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/JGwWNGJdvx8" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="video-title">Ed Sheeran - Shape of You</div>
-
-    <!-- Third Video (John Legend - All of Me) -->
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/450p7goxZqg" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="video-title">John Legend - All of Me</div>
+  <!-- Third Video (John Legend - All of Me) -->
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/450p7goxZqg" frameborder="0" allowfullscreen></iframe>
   </div>
 
 </body>

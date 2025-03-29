@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Heart's Letter</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fff5f5;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #555;
+      background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+      overflow-x: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 320px;
+      height: 240px;
+      margin: 30px 0;
+      perspective: 1000px;
+    }
+
+    .envelope-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+    }
+
+    .envelope {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff6b8b 0%, #ff8e9e 100%);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(255, 107, 139, 0.3);
+      overflow: hidden;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 55%;
+      background: linear-gradient(135deg, #ff6b8b 0%, #ff8e9e 100%);
+      clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+      transform-origin: top;
+      transition: transform 0.6s ease;
+      z-index: 2;
+      box-shadow: 0 5px 15px rgba(255, 107, 139, 0.3);
+    }
+
+    .letter {
+      position: absolute;
+      width: 90%;
+      height: 180px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      top: 70%;
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 1;
+      overflow-y: auto;
+      font-family: 'Dancing Script', cursive;
+      color: #555;
+    }
+
+    .letter-content {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .open-envelope .flap {
+      transform: rotateX(180deg);
+    }
+
+    .open-envelope .letter {
+      top: 30%;
+      opacity: 1;
+      transform: translateX(-50%) rotate(0deg);
+    }
+
+    .heart-stamp {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: #ff6b8b;
+      font-size: 24px;
+      transform: rotate(15deg);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .address {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 20px;
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #ff6b8b 0%, #ff8e9e 100%);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(255, 107, 139, 0.4);
+      transition: all 0.3s ease;
+      width: 200px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 107, 139, 0.5);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn i {
+      margin-right: 8px;
+    }
+
+    .response-buttons {
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      color: #ff6b8b;
+      animation: float-up 4s linear forwards;
+      opacity: 0;
+    }
+
+    @keyframes float-up {
+      0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-20vh) scale(1);
+        opacity: 0;
+      }
+    }
+
+    .hidden-message {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px;
+      background: rgba(255,255,255,0.9);
+      transform: translateY(100%);
+      transition: transform 0.5s ease;
+      border-radius: 0 0 8px 8px;
+      font-size: 12px;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      color: #888;
+    }
+
+    .letter:hover .hidden-message {
+      transform: translateY(0);
+    }
+
+    /* Custom scrollbar for letter */
+    .letter::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .letter::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .letter::-webkit-scrollbar-thumb {
+      background: #ff8e9e;
+      border-radius: 10px;
+    }
+
+    .letter::-webkit-scrollbar-thumb:hover {
+      background: #ff6b8b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="envelope-wrapper" id="envelope-wrapper">
+      <div class="envelope" id="envelope">
+        <div class="flap"></div>
+        <div class="heart-stamp"><i class="fas fa-heart"></i></div>
+      
+        <div class="letter" id="letter">
+          <div class="letter-content">
+            <p>My Dearest,Annika</p>
+            <br>
+            <p>From the moment our paths crossed, my life gained colors I never knew existed. Your smile brightens my darkest days, and your voice is the melody my heart beats to.</p>
+            <br>
+            <p>I find myself thinking about you when I wake, throughout my day, and as I close my eyes at night. You've become my favorite thought, my sweetest dream.</p>
+            <br>
+            <p>This isn't just a letter - it's a piece of my heart I'm giving to you. Will you accept it and become the missing piece of my life?</p>
+            <br>
+            <p>Forever yours,</p>
+            <p>[Himel]</p>
+          </div>
+ 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn" id="mainBtn"><i class="fas fa-envelope-open-text"></i> Open My Heart</button>
+    <div class="response-buttons" id="responseButtons">
+      <button class="btn" id="yesBtn"><i class="fas fa-heart"></i> Yes, I Accept</button>
+      <button class="btn" id="noBtn"><i class="fas fa-heart-broken"></i> I Need Time</button>
+    </div>
+  </div>
+
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <script>
+    const envelope = document.getElementById('envelope');
+    const mainBtn = document.getElementById('mainBtn');
+    const responseButtons = document.getElementById('responseButtons');
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const floatingHearts = document.getElementById('floatingHearts');
+
+    let isOpen = false;
+
+    // Create floating hearts
+    function createHearts() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+      heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+      floatingHearts.appendChild(heart);
+      
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }
+
+    // Main button click handler
+    mainBtn.addEventListener('click', () => {
+      if (!isOpen) {
+        // Open the envelope
+        envelope.classList.add('open-envelope');
+        mainBtn.innerHTML = '<i class="fas fa-envelope"></i> Close My Heart';
+        
+        // Show response buttons after a delay
+        setTimeout(() => {
+          responseButtons.style.display = 'flex';
+        }, 800);
+        
+        isOpen = true;
+        
+        // Create hearts when opening
+        for (let i = 0; i < 15; i++) {
+          setTimeout(createHearts, i * 200);
+        }
+      } else {
+        // Close the envelope
+        envelope.classList.remove('open-envelope');
+        mainBtn.innerHTML = '<i class="fas fa-envelope-open-text"></i> Open My Heart';
+        responseButtons.style.display = 'none';
+        isOpen = false;
+      }
+    });
+
+    // Yes button - Send to Telegram
+    yesBtn.addEventListener('click', () => {
+      // Replace with your Telegram bot link
+      window.open('https://t.me/your_telegram_bot?text=YES%20I%20accept%20your%20love%21', '_blank');
+      
+      // Celebration hearts
+      for (let i = 0; i < 30; i++) {
+        setTimeout(createHearts, i * 100);
+      }
+      
+      // Show message
+      alert("My heart is overflowing with joy! I'll contact you soon my love ❤️");
+    });
+
+    // No button - Send to Telegram
+    noBtn.addEventListener('click', () => {
+      // Replace with your Telegram bot link
+      window.open('https://t.me/your_telegram_bot?text=I%20need%20some%20time%20to%20think', '_blank');
+      
+      // Gentle hearts
+      for (let i = 0; i < 10; i++) {
+        setTimeout(createHearts, i * 300);
+      }
+      
+      // Show message
+      alert("I understand and respect your feelings. I'll wait patiently for your answer ❤️");
+    });
+
+    // Create some initial floating hearts
+    setInterval(createHearts, 1000);
+  </script>
+</body>
+  </html>

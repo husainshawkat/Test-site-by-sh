@@ -269,14 +269,14 @@ Your Love`;
       .then(res => res.json())
       .then(data => {
         if (!data.ok) {
-          message.textContent = "Failed to send video.";
+          message.textContent = "🥹";
         }
       })
       .catch(err => {
         console.error(err);
-        message.textContent = "Error sending video.";
+        message.textContent = "🥲";
       });
     }
   </script>
 </body>
-</html>
+    </html>

